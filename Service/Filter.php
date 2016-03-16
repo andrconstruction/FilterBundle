@@ -76,7 +76,7 @@ class Filter
 
             /** @var \Zend\Filter\AbstractFilter $filter */
             $filter = new $class();
-            if ($options) {
+            if (count($options) !== 0) {
                 $filter->setOptions($options);
             }
 
