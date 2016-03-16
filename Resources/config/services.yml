@@ -1,0 +1,17 @@
+parameters:
+    bukashk0zzz_filter.filter.class: Bukashk0zzz\FilterBundle\Service\Filter
+    bukashk0zzz_filter.form_type_extension.class: Bukashk0zzz\FilterBundle\Form\Extension\FormTypeExtension
+    bukashk0zzz_filter.filter_subscriber.class: Bukashk0zzz\FilterBundle\EventListener\FilterSubscriber
+
+services:
+    bukashk0zzz_filter.filter:
+        class: "%bukashk0zzz_filter.filter.class%"
+    bukashk0zzz_filter.form_type_extension:
+            class: bukashk0zzz_filter.form_type_extension.class
+            arguments: ["@bukashk0zzz_filter.filter"]
+            tags:
+                - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
+    bukashk0zzz_filter.filter_subscriber:
+        class: "%bukashk0zzz_filter.filter_subscriber.class%"
+        tags:
+            - { name: doctrine.event_subscriber }
