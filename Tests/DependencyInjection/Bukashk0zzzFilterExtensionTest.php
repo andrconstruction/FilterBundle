@@ -38,6 +38,9 @@ class Bukashk0zzzFilterExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $this->extension = new Bukashk0zzzFilterExtension();
         $this->container = new ContainerBuilder();
+
+        $this->container->set('annotations.cached_reader', new \StdClass());
+
         $this->container->registerExtension($this->extension);
     }
 
