@@ -77,7 +77,7 @@ final class FilterAnnotation implements Annotation
             throw new \InvalidArgumentException('Filter must be string');
         }
 
-        if ($filter && strpos($filter, 'Zend\Filter') === false) {
+        if ($filter && strpos($filter, '\\') === false) {
             $filter = 'Zend\Filter\\'.$filter;
         }
 

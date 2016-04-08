@@ -90,6 +90,7 @@ class User
     /**
      * @Filter("StripTags")
      * @Filter("StringTrim")
+     * @Filter("AppBundle\Filter\SanitizeAbout")
      * @var string
      */
     protected $about;

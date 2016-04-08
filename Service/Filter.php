@@ -49,15 +49,15 @@ class Filter
 
         $reflectionClass = ClassUtils::newReflectionClass(get_class($object));
         foreach ($reflectionClass->getProperties() as $property) {
-            $filterAnnotation = $this->annotationReader->getPropertyAnnotation($property, FilterAnnotation::class);
+            foreach ($this->annotationReader->getPropertyAnnotations($property) as $annotation) {
+                if ($annotation instanceof FilterAnnotation) {
+                    $property->setAccessible(true);
 
-            if ($filterAnnotation instanceof FilterAnnotation) {
-                $property->setAccessible(true);
-
-                if ($value = $property->getValue($object)) {
-                    $filter = $filterAnnotation->getFilter();
-                    $options = $filterAnnotation->getOptions();
-                    $property->setValue($object, $this->getZendInstance($filter, $options)->filter($value));
+                    if ($value = $property->getValue($object)) {
+                        $filter  = $annotation->getFilter();
+                        $options = $annotation->getOptions();
+                        $property->setValue($object, $this->getZendInstance($filter, $options)->filter($value));
+                    }
                 }
             }
         }
