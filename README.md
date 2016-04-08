@@ -61,7 +61,9 @@ use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
 ```
 
 Annotation `@Filter` has one required option *filter* which value should be name of Zend filter class.
-It can be set like this `@Filter("StringTrim")` or `@@Filter(filter="StringTrim")`. 
+It can be set like this `@Filter("StringTrim")` or `@Filter(filter="AppBundle\Filter\MyCustomFilter")`.
+
+`AppBundle\Filter\MyCustomFilter` - in this example, must be class that extends `\Zend\Filter\AbstractFilter`
 
 Also there is one not required option `options` - it must be array type and will pass to Zend filter using `setOptions` method from zend filter. 
 
@@ -90,7 +92,7 @@ class User
     /**
      * @Filter("StripTags")
      * @Filter("StringTrim")
-     * @Filter("AppBundle\Filter\SanitizeAbout")
+     * @Filter("AppBundle\Filter\MyCustomFilter")
      * @var string
      */
     protected $about;
