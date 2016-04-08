@@ -9,16 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Bukashk0zzz\FilterBundle\Tests;
+namespace Bukashk0zzz\FilterBundle\Tests\Form;
 
-use Bukashk0zzz\FilterBundle\Service\Filter;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
-use Bukashk0zzz\FilterBundle\Tests\Form\FilterExtension;
-use Symfony\Component\Form\Test\TypeTestCase;
-use Doctrine\Common\Annotations\AnnotationReader;
-use Doctrine\Common\Annotations\CachedReader;
-use Doctrine\Common\Cache\ArrayCache;
 
 /** @noinspection LongInheritanceChainInspection
  *
@@ -27,15 +21,21 @@ use Doctrine\Common\Cache\ArrayCache;
  * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  *
  */
-class FormTypeExtensionWithoutFilterTest extends TypeTestCase
+class FormTypeExtensionWithoutFilterTest extends AbstractFormTypeExtension
 {
     /**
-     * @var bool $autoFilter
+     * {@inheritdoc}
      */
-    protected $autoFilter;
+    public function setUp()
+    {
+        $this->autoFilter = false;
+        parent::setUp();
+    }
 
     /**
      * Test form type extension without filter
+     * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
+     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException if any given option is not applicable to the given type
      */
     public function testTypeWithoutFilter()
     {
@@ -48,12 +48,5 @@ class FormTypeExtensionWithoutFilterTest extends TypeTestCase
         ]);
         static::assertSame('Test name <p>test</p>', $user->getName());
         static::assertSame('Test <p>about</p>', $form->getData()->getAbout());
-    }
-
-    protected function getExtensions()
-    {
-        return array_merge(parent::getExtensions(), array(
-            new FilterExtension(new Filter(new CachedReader(new AnnotationReader(), new ArrayCache())), false),
-        ));
     }
 }

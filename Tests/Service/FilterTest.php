@@ -25,22 +25,35 @@ use Doctrine\Common\Cache\ArrayCache;
 class FilterTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @var Filter
+     */
+    protected $filter;
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function setUp()
+    {
+        $this->filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
+    }
+
+    /**
      * Service init test
      */
     public function testWrapper()
     {
-        $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
-
         //check if instance
-        static::assertInstanceOf('Bukashk0zzz\FilterBundle\Service\Filter', $filter);
+        static::assertInstanceOf('Bukashk0zzz\FilterBundle\Service\Filter', $this->filter);
     }
 
     /**
      * Test Filter With Object that null
+     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function testFilterWithNullObject()
     {
-        $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
-        $filter->filterEntity(null);
+        $this->filter->filterEntity(null);
     }
 }

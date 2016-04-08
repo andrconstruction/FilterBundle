@@ -33,19 +33,23 @@ class Bukashk0zzzFilterExtensionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * {@inheritdoc}
+     * @throws \BadMethodCallException When this ContainerBuilder is frozen
      */
     protected function setUp()
     {
         $this->extension = new Bukashk0zzzFilterExtension();
         $this->container = new ContainerBuilder();
 
-        $this->container->set('annotations.cached_reader', new \StdClass());
+        $this->container->set('annotations.cached_reader', new \stdClass());
 
         $this->container->registerExtension($this->extension);
     }
 
     /**
      * Test load extension
+     * @throws \Symfony\Component\DependencyInjection\Exception\BadMethodCallException When this ContainerBuilder is frozen
+     * @throws \LogicException
+     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testLoadExtension()
     {

@@ -22,6 +22,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test annotation with `value` option
+     * @throws \LogicException
+     * @throws \PHPUnit_Framework_AssertionFailedError
      */
     public function testValueOption()
     {
@@ -33,6 +35,7 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test annotation with all options
+     * @throws \LogicException
      */
     public function testAllOptions()
     {
@@ -49,6 +52,7 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation without any option
      *
      * @expectedException \LogicException
+     * @throws \LogicException
      */
     public function testAnnotationWithoutOptions()
     {
@@ -59,6 +63,7 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong type for `filter` option
      *
      * @expectedException \InvalidArgumentException
+     * @throws \LogicException
      */
     public function testWrongTypeForFilterOption()
     {
@@ -69,6 +74,7 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong zend filter class for `filter` option
      *
      * @expectedException \InvalidArgumentException
+     * @throws \LogicException
      */
     public function testWrongFilterClassForFilterOption()
     {
@@ -79,6 +85,7 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong type for `value` option
      *
      * @expectedException \InvalidArgumentException
+     * @throws \LogicException
      */
     public function testWrongTypeForValueOption()
     {
@@ -89,6 +96,7 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong type for `options` option
      *
      * @expectedException \InvalidArgumentException
+     * @throws \LogicException
      */
     public function testWrongTypeForOptionsOption()
     {

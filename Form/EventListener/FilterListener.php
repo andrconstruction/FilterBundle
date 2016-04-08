@@ -51,6 +51,7 @@ class FilterListener implements EventSubscriberInterface
      * @param FormEvent $event
      * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
      * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function onPostSubmit(FormEvent $event)
     {

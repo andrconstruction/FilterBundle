@@ -39,7 +39,7 @@ final class FilterAnnotation implements Annotation
      *
      * @param array $parameters Filter parameters
      *
-     * @throws \Exception
+     * @throws \LogicException
      */
     public function __construct(array $parameters)
     {
@@ -69,7 +69,7 @@ final class FilterAnnotation implements Annotation
     /**
      * @param string $filter
      * @return $this
-     * @throws \Exception
+     * @throws \InvalidArgumentException
      */
     public function setFilter($filter)
     {

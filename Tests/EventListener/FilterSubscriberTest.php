@@ -29,6 +29,10 @@ class FilterSubscriberTest extends WebTestCase
 {
     /**
      * Test persist event
+     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \PHPUnit_Framework_Exception
+     * @throws \InvalidArgumentException
      */
     public function testPersist()
     {
@@ -45,6 +49,10 @@ class FilterSubscriberTest extends WebTestCase
 
     /**
      * Test update event
+     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \PHPUnit_Framework_Exception
+     * @throws \InvalidArgumentException
      */
     public function testUpdate()
     {
@@ -78,6 +86,7 @@ class FilterSubscriberTest extends WebTestCase
      * @param $eventType
      *
      * @return \PHPUnit_Framework_MockObject_MockObject
+     * @throws \PHPUnit_Framework_Exception
      */
     private function mockEvent($eventType)
     {

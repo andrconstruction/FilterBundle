@@ -52,6 +52,7 @@ class FilterSubscriber implements EventSubscriber
      * @param LifecycleEventArgs $args
      * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
      * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function prePersist(LifecycleEventArgs $args)
     {
@@ -62,6 +63,7 @@ class FilterSubscriber implements EventSubscriber
      * @param LifecycleEventArgs $args
      * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
      * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
@@ -72,6 +74,7 @@ class FilterSubscriber implements EventSubscriber
      * @param LifecycleEventArgs $args
      * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
      * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     protected function filter(LifecycleEventArgs $args)
     {

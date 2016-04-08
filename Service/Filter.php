@@ -40,6 +40,7 @@ class Filter
      * @param mixed $object
      * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
      * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     public function filterEntity($object)
     {
@@ -68,14 +69,19 @@ class Filter
      * @param array $options
      * @return \Zend\Filter\FilterInterface
      * @throws \Zend\Filter\Exception\InvalidArgumentException
+     * @throws \InvalidArgumentException
      */
     protected function getZendInstance($class, $options)
     {
-        try {
-            new \ReflectionMethod($class, 'setOptions');
+        /** @var \Zend\Filter\AbstractFilter $filter */
+        $filter = new $class();
 
-            /** @var \Zend\Filter\AbstractFilter $filter */
-            $filter = new $class();
+        $abstractFilterClass = '\Zend\Filter\AbstractFilter';
+        if (!$filter instanceof $abstractFilterClass) {
+            throw new \InvalidArgumentException("Filter class must extend $abstractFilterClass: $class");
+        }
+
+        try {
             if (count($options) !== 0) {
                 $filter->setOptions($options);
             }

@@ -11,32 +11,34 @@
 
 namespace Bukashk0zzz\FilterBundle\Tests\Form;
 
-use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
+use Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /** @noinspection LongInheritanceChainInspection
  *
- * Test the FormTypeExtension
+ * Test the FormTypeExtensionBadTest
  *
  * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  *
  */
-class FormTypeExtensionTest extends AbstractFormTypeExtension
+class FormTypeExtensionBadTest extends AbstractFormTypeExtension
 {
     /**
-     * Test form type extension
+     * Test annotation with wrong zend filter class for `filter` option
+     *
+     * @expectedException \InvalidArgumentException
+     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
      * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
      * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException if any given option is not applicable to the given type
      */
-    public function testType()
+    public function testWrongFilterClassForFilterOption()
     {
-        $user = new User();
-        $form = $this->factory->create(UserType::class, $user);
+        $user = new BadUser();
+        $form = $this->factory->create(UserType::class, $user, ['data_class' => 'Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser']);
         $form->submit([
-            'name' => '     Test name <p>test</p> bla <br> bla',
-            'about' => 'Test <p>about</p>     ',
+            'name' => 'Test',
+            'about' => 'Test',
         ]);
-        static::assertSame('Test name test bla <br> bla', $user->getName());
-        static::assertSame('Test about', $form->getData()->getAbout());
     }
 }

@@ -25,7 +25,7 @@ class Configuration implements ConfigurationInterface
      * Generates the configuration tree.
      *
      * @return \Symfony\Component\Config\Definition\NodeInterface
-     * @throws \Exception
+     * @throws \RuntimeException When the node type is not supported
      */
     public function getConfigTreeBuilder()
     {
