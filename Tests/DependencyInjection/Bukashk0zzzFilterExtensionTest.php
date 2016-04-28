@@ -34,6 +34,7 @@ class Bukashk0zzzFilterExtensionTest extends \PHPUnit_Framework_TestCase
     /**
      * {@inheritdoc}
      * @throws \BadMethodCallException When this ContainerBuilder is frozen
+     * @throws \Symfony\Component\DependencyInjection\Exception\BadMethodCallException
      */
     protected function setUp()
     {

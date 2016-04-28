@@ -25,6 +25,7 @@ class Bukashk0zzzFilterExtension extends Extension
 {
     /**
      * {@inheritdoc}
+     * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
      * @throws \Exception
      */
     public function load(array $configs, ContainerBuilder $container)

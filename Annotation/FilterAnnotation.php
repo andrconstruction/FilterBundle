@@ -40,6 +40,7 @@ final class FilterAnnotation implements Annotation
      * @param array $parameters Filter parameters
      *
      * @throws \LogicException
+     * @throws \InvalidArgumentException
      */
     public function __construct(array $parameters)
     {
