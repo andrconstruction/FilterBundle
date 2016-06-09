@@ -5,18 +5,18 @@ parameters:
 
 services:
     bukashk0zzz_filter.filter:
-        class: "%bukashk0zzz_filter.filter.class%"
+        class: '%bukashk0zzz_filter.filter.class%'
         arguments:
-            - "@annotations.cached_reader"
+            - '@annotations.cached_reader'
     bukashk0zzz_filter.form_type_extension:
-            class: "%bukashk0zzz_filter.form_type_extension.class%"
+            class: '%bukashk0zzz_filter.form_type_extension.class%'
             arguments:
-                - "@bukashk0zzz_filter.filter"
+                - '@bukashk0zzz_filter.filter'
             tags:
                 - { name: form.type_extension, extended_type: Symfony\Component\Form\Extension\Core\Type\FormType }
     bukashk0zzz_filter.filter_subscriber:
-        class: "%bukashk0zzz_filter.filter_subscriber.class%"
+        class: '%bukashk0zzz_filter.filter_subscriber.class%'
         arguments:
-            - "@bukashk0zzz_filter.filter"
+            - '@bukashk0zzz_filter.filter'
         tags:
             - { name: doctrine.event_subscriber }
