@@ -37,7 +37,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Bukashk0zzz\FilterBundle\Tests\Fixtures\User',
+            'data_class' => User::class,
         ]);
     }
 }

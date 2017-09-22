@@ -11,11 +11,13 @@
 namespace Bukashk0zzz\FilterBundle\Tests\Annotation;
 
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
+use PHPUnit\Framework\TestCase;
+use Zend\Filter\StringTrim;
 
 /**
  * FilterAnnotationTest
  */
-class FilterTest extends \PHPUnit_Framework_TestCase
+class FilterTest extends TestCase
 {
     /**
      * Test annotation with `value` option
@@ -24,7 +26,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
     {
         $annotation = new FilterAnnotation(['value' => 'StringTrim']);
 
-        static::assertEquals('Zend\Filter\StringTrim', $annotation->getFilter());
+        static::assertEquals(StringTrim::class, $annotation->getFilter());
         static::assertEmpty($annotation->getOptions());
     }
 
@@ -38,7 +40,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
             'options' => ['charlist' => 'test'],
         ]);
 
-        static::assertEquals('Zend\Filter\StringTrim', $annotation->getFilter());
+        static::assertEquals(StringTrim::class, $annotation->getFilter());
         static::assertEquals(['charlist' => 'test'], $annotation->getOptions());
     }
 
@@ -85,7 +87,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
     /**
      * Test annotation with wrong type for `options` option
      *
-     * @expectedException \InvalidArgumentException
+     * @expectedException \TypeError
      */
     public function testWrongTypeForOptionsOption(): void
     {

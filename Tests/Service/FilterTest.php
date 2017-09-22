@@ -14,11 +14,12 @@ use Bukashk0zzz\FilterBundle\Service\Filter;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test the FilterTest
  */
-class FilterTest extends \PHPUnit_Framework_TestCase
+class FilterTest extends TestCase
 {
     /**
      * @var Filter
@@ -39,7 +40,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
     public function testWrapper(): void
     {
         //check if instance
-        static::assertInstanceOf('Bukashk0zzz\FilterBundle\Service\Filter', $this->filter);
+        static::assertInstanceOf(Filter::class, $this->filter);
     }
 
     /**
@@ -48,5 +49,6 @@ class FilterTest extends \PHPUnit_Framework_TestCase
     public function testFilterWithNullObject(): void
     {
         $this->filter->filterEntity(null);
+        self::assertTrue(true);
     }
 }

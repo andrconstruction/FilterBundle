@@ -77,12 +77,9 @@ class FilterSubscriberTest extends WebTestCase
      */
     private function mockEvent(string $eventType): \PHPUnit_Framework_MockObject_MockObject
     {
-        $lifeCycleEvent = $this->getMock(
+        $lifeCycleEvent = $this->createPartialMock(
             '\Doctrine\ORM\Event\\'.$eventType,
-            ['getEntityManager', 'getEntity', 'getEntityChangeSet'],
-            [],
-            '',
-            false
+            ['getEntityManager', 'getEntity', 'getEntityChangeSet']
         );
 
         return $lifeCycleEvent;

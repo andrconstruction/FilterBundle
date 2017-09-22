@@ -26,7 +26,7 @@ class FormTypeExtensionBadTest extends AbstractFormTypeExtension
     public function testWrongFilterClassForFilterOption(): void
     {
         $user = new BadUser();
-        $form = $this->factory->create(UserType::class, $user, ['data_class' => 'Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser']);
+        $form = $this->factory->create(UserType::class, $user, ['data_class' => BadUser::class]);
         $form->submit([
             'name' => 'Test',
             'about' => 'Test',

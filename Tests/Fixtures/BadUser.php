@@ -30,9 +30,9 @@ class BadUser
     protected $about;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -40,9 +40,9 @@ class BadUser
     /**
      * @param string $name
      *
-     * @return $this
+     * @return BadUser
      */
-    public function setName(string $name)
+    public function setName(string $name): BadUser
     {
         $this->name = $name;
 
@@ -50,9 +50,9 @@ class BadUser
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAbout(): string
+    public function getAbout(): ?string
     {
         return $this->about;
     }
@@ -60,9 +60,9 @@ class BadUser
     /**
      * @param string $about
      *
-     * @return $this
+     * @return BadUser
      */
-    public function setAbout(string $about)
+    public function setAbout(string $about): BadUser
     {
         $this->about = $about;
 

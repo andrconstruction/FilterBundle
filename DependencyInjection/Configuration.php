@@ -12,7 +12,6 @@ namespace Bukashk0zzz\FilterBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
-use Symfony\Component\Config\Definition\NodeInterface;
 
 /**
  * This is the configuration class
@@ -22,9 +21,9 @@ class Configuration implements ConfigurationInterface
     /**
      * Generates the configuration tree.
      *
-     * @return \Symfony\Component\Config\Definition\NodeInterface
+     * @return TreeBuilder
      */
-    public function getConfigTreeBuilder(): NodeInterface
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('bukashk0zzz_filter');

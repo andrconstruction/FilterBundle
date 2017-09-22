@@ -35,9 +35,9 @@ class User
     protected $about;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -45,9 +45,9 @@ class User
     /**
      * @param string $name
      *
-     * @return $this
+     * @return User
      */
-    public function setName(string $name)
+    public function setName(string $name): User
     {
         $this->name = $name;
 
@@ -55,9 +55,9 @@ class User
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getAbout(): string
+    public function getAbout(): ?string
     {
         return $this->about;
     }
@@ -65,9 +65,9 @@ class User
     /**
      * @param string $about
      *
-     * @return $this
+     * @return User
      */
-    public function setAbout(string $about)
+    public function setAbout(string $about): User
     {
         $this->about = $about;
 

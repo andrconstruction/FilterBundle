@@ -11,12 +11,13 @@
 namespace Bukashk0zzz\FilterBundle\Tests\DependencyInjection;
 
 use Bukashk0zzz\FilterBundle\DependencyInjection\Bukashk0zzzFilterExtension;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Bukashk0zzzFilterExtensionTest
  */
-class Bukashk0zzzFilterExtensionTest extends \PHPUnit_Framework_TestCase
+class Bukashk0zzzFilterExtensionTest extends TestCase
 {
     /**
      * @var Bukashk0zzzFilterExtension Bukashk0zzzFilterExtension

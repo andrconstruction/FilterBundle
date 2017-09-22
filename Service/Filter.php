@@ -63,12 +63,12 @@ class Filter
     }
 
     /**
-     * @param string  $class
-     * @param mixed[] $options
+     * @param string       $class
+     * @param mixed[]|null $options
      *
      * @return \Zend\Filter\FilterInterface
      */
-    protected function getZendInstance(string $class, array $options): FilterInterface
+    protected function getZendInstance(string $class, ?array $options): FilterInterface
     {
         /** @var AbstractFilter $filter */
         $filter = new $class();

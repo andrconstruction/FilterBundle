@@ -61,11 +61,11 @@ final class FilterAnnotation implements Annotation
     }
 
     /**
-     * @param string $filter
+     * @param mixed $filter
      *
-     * @return $this
+     * @return FilterAnnotation
      */
-    public function setFilter(string $filter)
+    public function setFilter($filter): FilterAnnotation
     {
         if (!\is_string($filter)) {
             throw new \InvalidArgumentException('Filter must be string');
@@ -85,23 +85,20 @@ final class FilterAnnotation implements Annotation
     }
 
     /**
-     * @return mixed[]
+     * @return mixed[]|null
      */
-    public function getOptions(): array
+    public function getOptions(): ?array
     {
         return $this->options;
     }
 
     /**
-     * @param mixed[] $options
+     * @param mixed[]|null $options
      *
-     * @return $this
+     * @return FilterAnnotation
      */
-    public function setOptions(array $options)
+    public function setOptions(?array $options): FilterAnnotation
     {
-        if (!\is_array($options)) {
-            throw new \InvalidArgumentException('Options must be array');
-        }
         $this->options = $options;
 
         return $this;
