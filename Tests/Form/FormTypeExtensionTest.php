@@ -13,7 +13,7 @@ namespace Bukashk0zzz\FilterBundle\Tests\Form;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
-/** @noinspection LongInheritanceChainInspection
+/**
  * Test the FormTypeExtension
  */
 class FormTypeExtensionTest extends AbstractFormTypeExtension

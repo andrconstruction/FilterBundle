@@ -16,7 +16,7 @@ use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Component\Form\Test\TypeTestCase;
 
-/** @noinspection LongInheritanceChainInspection
+/**
  * AbstractFormTypeExtension
  */
 abstract class AbstractFormTypeExtension extends TypeTestCase

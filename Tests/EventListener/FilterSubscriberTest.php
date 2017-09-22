@@ -18,7 +18,7 @@ use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-/** @noinspection LongInheritanceChainInspection
+/**
  * FilterSubscriberTest
  */
 class FilterSubscriberTest extends WebTestCase
