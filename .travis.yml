@@ -13,7 +13,7 @@ allow_failures:
 before_script:
   - composer self-update
   - if [ "$SYMFONY_VERSION" != "" ]; then composer require "symfony/symfony:${SYMFONY_VERSION}" --no-update; fi;
-  - composer install --dev --prefer-dist --no-interaction
+  - composer install --dev --prefer-dist --no-interaction -o
 
 script:
   - ./vendor/bin/phpcs -p --standard=./ruleset.xml
