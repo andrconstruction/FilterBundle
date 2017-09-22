@@ -18,7 +18,7 @@
     },
     "require": {
         "php": ">=7.1.0",
-        "symfony/symfony": ">=3.0.6",
+        "symfony/symfony": ">=3.3.0",
         "doctrine/orm": "^2.5",
         "zendframework/zend-filter": "^2.6"
     },
