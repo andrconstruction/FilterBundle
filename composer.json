@@ -26,7 +26,6 @@
         "escapestudios/symfony2-coding-standard": "^3.0",
         "slevomat/coding-standard": "^4.0",
         "friendsofphp/php-cs-fixer": "^2.3",
-        "symfony/phpunit-bridge": "^3.3",
         "phpunit/phpunit": "^6.2"
     },
     "autoload": {
