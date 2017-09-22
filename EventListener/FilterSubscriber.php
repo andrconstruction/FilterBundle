@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -11,14 +10,12 @@
 
 namespace Bukashk0zzz\FilterBundle\EventListener;
 
+use Bukashk0zzz\FilterBundle\Service\Filter;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Bukashk0zzz\FilterBundle\Service\Filter;
 
 /**
  * Class AbstractListener
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class FilterSubscriber implements EventSubscriber
 {
@@ -29,6 +26,7 @@ class FilterSubscriber implements EventSubscriber
 
     /**
      * FilterListener constructor.
+     *
      * @param Filter $filterService
      */
     public function __construct(Filter $filterService)
@@ -38,6 +36,7 @@ class FilterSubscriber implements EventSubscriber
 
     /**
      * {@inheritdoc}
+     *
      * @return array
      */
     public function getSubscribedEvents()
@@ -50,33 +49,24 @@ class FilterSubscriber implements EventSubscriber
 
     /**
      * @param LifecycleEventArgs $args
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
-    public function prePersist(LifecycleEventArgs $args)
+    public function prePersist(LifecycleEventArgs $args): void
     {
         $this->filter($args);
     }
 
     /**
      * @param LifecycleEventArgs $args
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
-    public function preUpdate(LifecycleEventArgs $args)
+    public function preUpdate(LifecycleEventArgs $args): void
     {
         $this->filter($args);
     }
 
     /**
      * @param LifecycleEventArgs $args
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
-    protected function filter(LifecycleEventArgs $args)
+    protected function filter(LifecycleEventArgs $args): void
     {
         $entity = $args->getEntity();
         $this->filterService->filterEntity($entity);

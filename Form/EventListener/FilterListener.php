@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -18,8 +17,6 @@ use Symfony\Component\Form\FormEvents;
 
 /**
  * Class FilterListener
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class FilterListener implements EventSubscriberInterface
 {
@@ -30,6 +27,7 @@ class FilterListener implements EventSubscriberInterface
 
     /**
      * FilterListener constructor.
+     *
      * @param Filter $filterService
      */
     public function __construct(Filter $filterService)
@@ -38,26 +36,25 @@ class FilterListener implements EventSubscriberInterface
     }
 
     /**
-     * @return array
+     * @return string[]
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
-        return array(
+        return [
             FormEvents::POST_SUBMIT => 'onPostSubmit',
-        );
+        ];
     }
 
     /**
      * @param FormEvent $event
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
+     *
+     * @return void
      */
-    public function onPostSubmit(FormEvent $event)
+    public function onPostSubmit(FormEvent $event): void
     {
         $clientData = $event->getData();
 
-        if (!is_object($clientData)) {
+        if (!\is_object($clientData)) {
             return;
         }
 

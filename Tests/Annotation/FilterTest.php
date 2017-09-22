@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -15,18 +14,13 @@ use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
 
 /**
  * FilterAnnotationTest
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
-class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
+class FilterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test annotation with `value` option
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
-    public function testValueOption()
+    public function testValueOption(): void
     {
         $annotation = new FilterAnnotation(['value' => 'StringTrim']);
 
@@ -36,10 +30,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test annotation with all options
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
      */
-    public function testAllOptions()
+    public function testAllOptions(): void
     {
         $annotation = new FilterAnnotation([
             'filter' => 'StringTrim',
@@ -54,10 +46,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation without any option
      *
      * @expectedException \LogicException
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
      */
-    public function testAnnotationWithoutOptions()
+    public function testAnnotationWithoutOptions(): void
     {
         new FilterAnnotation([]);
     }
@@ -66,10 +56,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong type for `filter` option
      *
      * @expectedException \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
      */
-    public function testWrongTypeForFilterOption()
+    public function testWrongTypeForFilterOption(): void
     {
         new FilterAnnotation(['filter' => 123]);
     }
@@ -78,10 +66,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong zend filter class for `filter` option
      *
      * @expectedException \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
      */
-    public function testWrongFilterClassForFilterOption()
+    public function testWrongFilterClassForFilterOption(): void
     {
         new FilterAnnotation(['filter' => 'test']);
     }
@@ -90,10 +76,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong type for `value` option
      *
      * @expectedException \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
      */
-    public function testWrongTypeForValueOption()
+    public function testWrongTypeForValueOption(): void
     {
         new FilterAnnotation(['value' => 123]);
     }
@@ -102,10 +86,8 @@ class FilterAnnotationTest extends \PHPUnit_Framework_TestCase
      * Test annotation with wrong type for `options` option
      *
      * @expectedException \InvalidArgumentException
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
      */
-    public function testWrongTypeForOptionsOption()
+    public function testWrongTypeForOptionsOption(): void
     {
         new FilterAnnotation(['filter' => 'StringTrim', 'options' => 123]);
     }

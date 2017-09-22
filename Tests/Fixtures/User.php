@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -22,6 +21,7 @@ class User
      * @Filter("StripTags", options={"allowTags": "br"})
      * @Filter("StringTrim")
      * @Filter("StripNewlines")
+     *
      * @var string
      */
     protected $name;
@@ -29,6 +29,7 @@ class User
     /**
      * @Filter("StripTags")
      * @Filter("StringTrim")
+     *
      * @var string
      */
     protected $about;
@@ -36,16 +37,17 @@ class User
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
      * @param string $name
+     *
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -55,16 +57,17 @@ class User
     /**
      * @return string
      */
-    public function getAbout()
+    public function getAbout(): string
     {
         return $this->about;
     }
 
     /**
      * @param string $about
+     *
      * @return $this
      */
-    public function setAbout($about)
+    public function setAbout(string $about)
     {
         $this->about = $about;
 

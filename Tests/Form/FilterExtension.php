@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Bukashk0zzz\FilterBundle\Tests\Form;
 
 use Bukashk0zzz\FilterBundle\Form\Extension\FormTypeExtension;
 use Bukashk0zzz\FilterBundle\Service\Filter;
-use Symfony\Component\Form\Extension\Validator\Type;
 use Symfony\Component\Form\AbstractExtension;
 
 /**
@@ -15,23 +14,23 @@ use Symfony\Component\Form\AbstractExtension;
 class FilterExtension extends AbstractExtension
 {
     /**
+     * @var bool
+     */
+    protected $autoFilter;
+    /**
      * @var Filter
      */
     private $filter;
 
     /**
-     * @var boolean
-     */
-    protected $autoFilter;
-
-    /**
      * {@inheritdoc}
+     *
      * @param Filter $filterService
      * @param        $autoFilter
      */
     public function __construct(Filter $filterService, $autoFilter)
     {
-        $this->filter     = $filterService;
+        $this->filter = $filterService;
         $this->autoFilter = $autoFilter;
     }
 
@@ -40,8 +39,8 @@ class FilterExtension extends AbstractExtension
      */
     protected function loadTypeExtensions()
     {
-        return array(
+        return [
             new FormTypeExtension($this->filter, $this->autoFilter),
-        );
+        ];
     }
 }

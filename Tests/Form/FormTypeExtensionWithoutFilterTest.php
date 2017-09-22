@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -15,11 +14,7 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /** @noinspection LongInheritanceChainInspection
- *
  * Test the FormTypeExtensionWithoutFilterTest
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
  */
 class FormTypeExtensionWithoutFilterTest extends AbstractFormTypeExtension
 {
@@ -34,10 +29,8 @@ class FormTypeExtensionWithoutFilterTest extends AbstractFormTypeExtension
 
     /**
      * Test form type extension without filter
-     * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
-     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException if any given option is not applicable to the given type
      */
-    public function testTypeWithoutFilter()
+    public function testTypeWithoutFilter(): void
     {
         $user = new User();
         $this->autoFilter = false;

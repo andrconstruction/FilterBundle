@@ -1,6 +1,6 @@
 {
     "name": "bukashk0zzz/filter-bundle",
-    "description": "Symfony2/Symfony3 filter bundle.",
+    "description": "Symfony filter bundle.",
     "keywords": ["bundle", "symfony", "filter", "filtering", "zend-filter"],
     "homepage": "https://github.com/bukashk0zzz/FilterBundle",
     "type": "symfony-bundle",
@@ -17,15 +17,17 @@
         "issues": "https://github.com/bukashk0zzz/FilterBundle/issues"
     },
     "require": {
-        "php": ">=5.6.0",
-        "symfony/symfony": "^2.8.6|^3.0.6",
-        "doctrine/orm": "~2.5",
-        "zendframework/zend-filter": "~2.6"
+        "php": ">=7.1.0",
+        "symfony/symfony": ">=3.0.6",
+        "doctrine/orm": "^2.5",
+        "zendframework/zend-filter": "^2.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "~5.0",
-        "squizlabs/php_codesniffer": "^2.5",
-        "escapestudios/symfony2-coding-standard": "~2.9"
+        "escapestudios/symfony2-coding-standard": "^3.0",
+        "slevomat/coding-standard": "^4.0",
+        "friendsofphp/php-cs-fixer": "^2.3",
+        "symfony/phpunit-bridge": "^3.3",
+        "phpunit/phpunit": "^6.2"
     },
     "autoload": {
         "psr-4": {

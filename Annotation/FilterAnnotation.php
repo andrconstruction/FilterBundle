@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -16,45 +15,39 @@ use Doctrine\ORM\Mapping\Annotation;
 /**
  * FilterAnnotation
  *
- * @Annotation
+ * @Annotation()
  * @Target({"PROPERTY", "METHOD"})
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 final class FilterAnnotation implements Annotation
 {
     /**
-     * @var string $filter ZendFilter name
+     * @var string ZendFilter name
      */
     private $filter;
 
     /**
-     * @var array $options Options
+     * @var mixed[] Options
      */
     private $options;
-
 
     /**
      * Constructor
      *
-     * @param array $parameters Filter parameters
-     *
-     * @throws \LogicException
-     * @throws \InvalidArgumentException
+     * @param mixed[] $parameters Filter parameters
      */
     public function __construct(array $parameters)
     {
-        if (!array_key_exists('value', $parameters) && !array_key_exists('filter', $parameters)) {
-            throw new \LogicException(sprintf('Either "value" or "filter" option must be set.'));
+        if (!\array_key_exists('value', $parameters) && !\array_key_exists('filter', $parameters)) {
+            throw new \LogicException(\sprintf('Either "value" or "filter" option must be set.'));
         }
 
-        if (array_key_exists('value', $parameters)) {
+        if (\array_key_exists('value', $parameters)) {
             $this->setFilter($parameters['value']);
-        } elseif (array_key_exists('filter', $parameters)) {
+        } elseif (\array_key_exists('filter', $parameters)) {
             $this->setFilter($parameters['filter']);
         }
 
-        if (array_key_exists('options', $parameters)) {
+        if (\array_key_exists('options', $parameters)) {
             $this->setOptions($parameters['options']);
         }
     }
@@ -62,27 +55,27 @@ final class FilterAnnotation implements Annotation
     /**
      * @return string
      */
-    public function getFilter()
+    public function getFilter(): string
     {
         return $this->filter;
     }
 
     /**
      * @param string $filter
+     *
      * @return $this
-     * @throws \InvalidArgumentException
      */
-    public function setFilter($filter)
+    public function setFilter(string $filter)
     {
-        if (!is_string($filter)) {
+        if (!\is_string($filter)) {
             throw new \InvalidArgumentException('Filter must be string');
         }
 
-        if ($filter && strpos($filter, '\\') === false) {
+        if ($filter && \mb_strpos($filter, '\\') === false) {
             $filter = 'Zend\Filter\\'.$filter;
         }
 
-        if (!class_exists($filter)) {
+        if (!\class_exists($filter)) {
             throw new \InvalidArgumentException("Could not find or autoload: $filter");
         }
 
@@ -92,21 +85,21 @@ final class FilterAnnotation implements Annotation
     }
 
     /**
-     * @return array
+     * @return mixed[]
      */
-    public function getOptions()
+    public function getOptions(): array
     {
         return $this->options;
     }
 
     /**
-     * @param array $options
+     * @param mixed[] $options
+     *
      * @return $this
-     * @throws \InvalidArgumentException
      */
-    public function setOptions($options)
+    public function setOptions(array $options)
     {
-        if (!is_array($options)) {
+        if (!\is_array($options)) {
             throw new \InvalidArgumentException('Options must be array');
         }
         $this->options = $options;

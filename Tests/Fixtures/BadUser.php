@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -20,6 +19,7 @@ class BadUser
 {
     /**
      * @Filter("\stdClass")
+     *
      * @var string
      */
     protected $name;
@@ -32,16 +32,17 @@ class BadUser
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
      * @param string $name
+     *
      * @return $this
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
 
@@ -51,16 +52,17 @@ class BadUser
     /**
      * @return string
      */
-    public function getAbout()
+    public function getAbout(): string
     {
         return $this->about;
     }
 
     /**
      * @param string $about
+     *
      * @return $this
      */
-    public function setAbout($about)
+    public function setAbout(string $about)
     {
         $this->about = $about;
 

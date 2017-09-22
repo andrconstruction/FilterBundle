@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -14,21 +13,22 @@ namespace Bukashk0zzz\FilterBundle\Service;
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Util\ClassUtils;
+use Zend\Filter\AbstractFilter;
+use Zend\Filter\FilterInterface;
 
 /**
  * Class Filter
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class Filter
 {
     /**
-     * @var CachedReader $annotationReader Cached annotation reader
+     * @var CachedReader Cached annotation reader
      */
     protected $annotationReader;
 
     /**
      * Filter constructor.
+     *
      * @param CachedReader $annotationReader
      */
     public function __construct(CachedReader $annotationReader)
@@ -38,24 +38,22 @@ class Filter
 
     /**
      * @param mixed $object
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
-    public function filterEntity($object)
+    public function filterEntity($object): void
     {
         if ($object === null) {
             return;
         }
 
-        $reflectionClass = ClassUtils::newReflectionClass(get_class($object));
+        $reflectionClass = ClassUtils::newReflectionClass(\get_class($object));
         foreach ($reflectionClass->getProperties() as $property) {
             foreach ($this->annotationReader->getPropertyAnnotations($property) as $annotation) {
                 if ($annotation instanceof FilterAnnotation) {
                     $property->setAccessible(true);
+                    $value = $property->getValue($object);
 
-                    if ($value = $property->getValue($object)) {
-                        $filter  = $annotation->getFilter();
+                    if ($value) {
+                        $filter = $annotation->getFilter();
                         $options = $annotation->getOptions();
                         $property->setValue($object, $this->getZendInstance($filter, $options)->filter($value));
                     }
@@ -65,29 +63,28 @@ class Filter
     }
 
     /**
-     * @param string $class
-     * @param array $options
+     * @param string  $class
+     * @param mixed[] $options
+     *
      * @return \Zend\Filter\FilterInterface
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
-    protected function getZendInstance($class, $options)
+    protected function getZendInstance(string $class, array $options): FilterInterface
     {
-        /** @var \Zend\Filter\AbstractFilter $filter */
+        /** @var AbstractFilter $filter */
         $filter = new $class();
 
-        $abstractFilterClass = '\Zend\Filter\AbstractFilter';
+        $abstractFilterClass = AbstractFilter::class;
         if (!$filter instanceof $abstractFilterClass) {
             throw new \InvalidArgumentException("Filter class must extend $abstractFilterClass: $class");
         }
 
         try {
-            if (count($options) !== 0) {
+            if (\count($options) !== 0) {
                 $filter->setOptions($options);
             }
 
             return $filter;
-        } catch (\Exception $e) {
+        } catch (\Throwable $e) {
             return new $class($options);
         }
     }

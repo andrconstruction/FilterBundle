@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -15,11 +14,7 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /** @noinspection LongInheritanceChainInspection
- *
  * Test the FormTypeExtensionBadTest
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
  */
 class FormTypeExtensionBadTest extends AbstractFormTypeExtension
 {
@@ -27,12 +22,8 @@ class FormTypeExtensionBadTest extends AbstractFormTypeExtension
      * Test annotation with wrong zend filter class for `filter` option
      *
      * @expectedException \InvalidArgumentException
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
-     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException if any given option is not applicable to the given type
      */
-    public function testWrongFilterClassForFilterOption()
+    public function testWrongFilterClassForFilterOption(): void
     {
         $user = new BadUser();
         $form = $this->factory->create(UserType::class, $user, ['data_class' => 'Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser']);

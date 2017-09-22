@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -20,21 +19,14 @@ use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /** @noinspection LongInheritanceChainInspection
- *
  * FilterSubscriberTest
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class FilterSubscriberTest extends WebTestCase
 {
     /**
      * Test persist event
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \PHPUnit_Framework_Exception
-     * @throws \InvalidArgumentException
      */
-    public function testPersist()
+    public function testPersist(): void
     {
         $user = new User();
         $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
@@ -49,12 +41,8 @@ class FilterSubscriberTest extends WebTestCase
 
     /**
      * Test update event
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \PHPUnit_Framework_Exception
-     * @throws \InvalidArgumentException
      */
-    public function testUpdate()
+    public function testUpdate(): void
     {
         $user = new User();
         $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
@@ -70,7 +58,7 @@ class FilterSubscriberTest extends WebTestCase
     /**
      * Test get subscribed events
      */
-    public function testSubscription()
+    public function testSubscription(): void
     {
         $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
         $subscriber = new FilterSubscriber($filter);
@@ -81,14 +69,13 @@ class FilterSubscriberTest extends WebTestCase
     }
 
     /**
-     * mock a lifeCycleEventArgs Object
+     * Mock a lifeCycleEventArgs Object
      *
-     * @param $eventType
+     * @param string $eventType
      *
      * @return \PHPUnit_Framework_MockObject_MockObject
-     * @throws \PHPUnit_Framework_Exception
      */
-    private function mockEvent($eventType)
+    private function mockEvent(string $eventType): \PHPUnit_Framework_MockObject_MockObject
     {
         $lifeCycleEvent = $this->getMock(
             '\Doctrine\ORM\Event\\'.$eventType,

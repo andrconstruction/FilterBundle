@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -13,11 +12,10 @@ namespace Bukashk0zzz\FilterBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\NodeInterface;
 
 /**
  * This is the configuration class
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class Configuration implements ConfigurationInterface
 {
@@ -25,9 +23,8 @@ class Configuration implements ConfigurationInterface
      * Generates the configuration tree.
      *
      * @return \Symfony\Component\Config\Definition\NodeInterface
-     * @throws \RuntimeException When the node type is not supported
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): NodeInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('bukashk0zzz_filter');

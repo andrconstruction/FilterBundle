@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -12,13 +11,12 @@
 namespace Bukashk0zzz\FilterBundle\Tests\Fixtures;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 /**
  * Class AccountProfileType
- * @package AppBundle\Form\Account
  */
 class UserType extends AbstractType
 {
@@ -35,7 +33,6 @@ class UserType extends AbstractType
 
     /**
      * {@inheritdoc}
-     * @throws \Symfony\Component\OptionsResolver\Exception\AccessException
      */
     public function configureOptions(OptionsResolver $resolver)
     {

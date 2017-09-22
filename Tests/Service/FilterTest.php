@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -18,9 +17,6 @@ use Doctrine\Common\Cache\ArrayCache;
 
 /**
  * Test the FilterTest
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
  */
 class FilterTest extends \PHPUnit_Framework_TestCase
 {
@@ -40,7 +36,7 @@ class FilterTest extends \PHPUnit_Framework_TestCase
     /**
      * Service init test
      */
-    public function testWrapper()
+    public function testWrapper(): void
     {
         //check if instance
         static::assertInstanceOf('Bukashk0zzz\FilterBundle\Service\Filter', $this->filter);
@@ -48,11 +44,8 @@ class FilterTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test Filter With Object that null
-     * @throws \Zend\Filter\Exception\RuntimeException If filtering $value is impossible
-     * @throws \Zend\Filter\Exception\InvalidArgumentException
-     * @throws \InvalidArgumentException
      */
-    public function testFilterWithNullObject()
+    public function testFilterWithNullObject(): void
     {
         $this->filter->filterEntity(null);
     }

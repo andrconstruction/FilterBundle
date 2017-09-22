@@ -1,4 +1,4 @@
-#Symfony2/Symfony3 Filter Bundle
+#Symfony Filter Bundle
 
 [![Build Status](https://img.shields.io/scrutinizer/build/g/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://travis-ci.org/Bukashk0zzz/FilterBundle)
 [![Code Coverage](https://img.shields.io/codecov/c/github/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://codecov.io/github/Bukashk0zzz/FilterBundle)
@@ -17,17 +17,20 @@ This bundle add a service that can be used to filter object values based on anno
 Also bundle can filter your forms if it finds a annotated entity attached. If `auto_filter_forms` enabled entities will be filtered before they are validated.
 [Zend filters doc](http://framework.zend.com/manual/current/en/modules/zend.filter.set.html)
 
-Installation
+Installation Symfony Flex
 ------------
 
-Add this to your `composer.json` file:
-
-```json
-"require": {
-	"bukashk0zzz/filter-bundle": "dev-master",
-}
+```bash
+composer config extra.symfony.allow-contrib true
+composer require bukashk0zzz/filter-bundle
 ```
 
+Installation without Symfony Flex
+------------
+
+```bash
+composer require bukashk0zzz/filter-bundle
+```
 
 Add the bundle to `app/AppKernel.php`
 

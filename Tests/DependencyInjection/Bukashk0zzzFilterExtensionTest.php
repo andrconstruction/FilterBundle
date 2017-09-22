@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -16,25 +15,21 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Bukashk0zzzFilterExtensionTest
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class Bukashk0zzzFilterExtensionTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var Bukashk0zzzFilterExtension $extension Bukashk0zzzFilterExtension
+     * @var Bukashk0zzzFilterExtension Bukashk0zzzFilterExtension
      */
     private $extension;
 
     /**
-     * @var ContainerBuilder $container Container builder
+     * @var ContainerBuilder Container builder
      */
     private $container;
 
     /**
      * {@inheritdoc}
-     * @throws \BadMethodCallException When this ContainerBuilder is frozen
-     * @throws \Symfony\Component\DependencyInjection\Exception\BadMethodCallException
      */
     protected function setUp()
     {
@@ -48,11 +43,8 @@ class Bukashk0zzzFilterExtensionTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test load extension
-     * @throws \Symfony\Component\DependencyInjection\Exception\BadMethodCallException When this ContainerBuilder is frozen
-     * @throws \LogicException
-     * @throws \PHPUnit_Framework_AssertionFailedError
      */
-    public function testLoadExtension()
+    public function testLoadExtension(): void
     {
         $this->container->prependExtensionConfig($this->extension->getAlias(), ['auto_filter_forms' => true]);
         $this->container->loadFromExtension($this->extension->getAlias());

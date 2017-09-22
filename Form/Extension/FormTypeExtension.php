@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the Bukashk0zzzFilterBundle
  *
@@ -19,8 +18,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 /**
  * Class FormTypeExtension
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
  */
 class FormTypeExtension extends AbstractTypeExtension
 {
@@ -30,16 +27,17 @@ class FormTypeExtension extends AbstractTypeExtension
     protected $filterService;
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $autoFilter;
 
     /**
      * FilterListener constructor.
-     * @param Filter  $filterService
-     * @param boolean $autoFilter
+     *
+     * @param Filter $filterService
+     * @param bool   $autoFilter
      */
-    public function __construct(Filter $filterService, $autoFilter)
+    public function __construct(Filter $filterService, bool $autoFilter)
     {
         $this->filterService = $filterService;
         $this->autoFilter = $autoFilter;

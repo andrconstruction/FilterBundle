@@ -1,5 +1,4 @@
-<?php
-
+<?php declare(strict_types = 1);
 /*
  * This file is part of the FilterBundle
  *
@@ -15,20 +14,14 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /** @noinspection LongInheritanceChainInspection
- *
  * Test the FormTypeExtension
- *
- * @author Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
  */
 class FormTypeExtensionTest extends AbstractFormTypeExtension
 {
     /**
      * Test form type extension
-     * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
-     * @throws \Symfony\Component\OptionsResolver\Exception\InvalidOptionsException if any given option is not applicable to the given type
      */
-    public function testType()
+    public function testType(): void
     {
         $user = new User();
         $form = $this->factory->create(UserType::class, $user);
