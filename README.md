@@ -48,7 +48,7 @@ Add this to your `config.yml`:
 
 ```yaml
 bukashk0zzz_filter:
-    # Enable if you need auto filtering form data before constrain(Validation) check
+    # Enable if you need auto filtering form data before constraint(Validation) check
     auto_filter_forms: false
 ```
 
