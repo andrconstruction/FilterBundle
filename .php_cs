@@ -17,6 +17,7 @@ return PhpCsFixer\Config::create()
         '@PHP71Migration' => true,
         'phpdoc_summary' => false,
         'yoda_style' => false,
+        'self_accessor' => false,
         'combine_consecutive_unsets' => true,
         'blank_line_after_opening_tag' => false,
         'phpdoc_to_comment' => false,
