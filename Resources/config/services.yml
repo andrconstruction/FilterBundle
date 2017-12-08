@@ -4,6 +4,9 @@ parameters:
     bukashk0zzz_filter.filter_subscriber.class: Bukashk0zzz\FilterBundle\EventListener\FilterSubscriber
 
 services:
+    _defaults:
+        public: true
+
     bukashk0zzz_filter.filter:
         class: '%bukashk0zzz_filter.filter.class%'
         arguments:
