@@ -16,12 +16,12 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * FilterSubscriberTest
  */
-class FilterSubscriberTest extends WebTestCase
+class FilterSubscriberTest extends TestCase
 {
     /**
      * Test persist event
