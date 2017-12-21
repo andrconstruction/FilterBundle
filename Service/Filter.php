@@ -79,7 +79,7 @@ class Filter
         }
 
         try {
-            if (\count($options) !== 0) {
+            if ($options !== null && \count($options) !== 0) {
                 $filter->setOptions($options);
             }
 
