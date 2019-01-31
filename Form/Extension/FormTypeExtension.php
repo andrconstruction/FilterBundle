@@ -37,10 +37,20 @@ class FormTypeExtension extends AbstractTypeExtension
 
     /**
      * {@inheritdoc}
+     *
+     * @deprecated since Symfony 4.2, use getExtendedTypes() instead.
      */
     public function getExtendedType()
     {
-        return FormType::class;
+        return self::getExtendedTypes()[0];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function getExtendedTypes()
+    {
+        return [FormType::class];
     }
 
     /**
