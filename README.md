@@ -6,7 +6,8 @@
 [![License](https://img.shields.io/packagist/l/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Latest Stable Version](https://img.shields.io/packagist/v/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c/small.png)](https://insight.sensiolabs.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c)
+
+[![SensioLabsInsight](https://insight.symfony.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c/big.svg)](https://insight.sensiolabs.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c)
 
 About
 -----
