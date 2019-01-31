@@ -3,13 +3,10 @@
 [![Build Status](https://img.shields.io/scrutinizer/build/g/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://travis-ci.org/Bukashk0zzz/FilterBundle)
 [![Code Coverage](https://img.shields.io/codecov/c/github/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://codecov.io/github/Bukashk0zzz/FilterBundle)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/Bukashk0zzz/FilterBundle/?branch=master)
-[![Dependency Status](https://www.versioneye.com/user/projects/56e91ff84e714c0035e76109/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56e91ff84e714c0035e76109)
 [![License](https://img.shields.io/packagist/l/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Latest Stable Version](https://img.shields.io/packagist/v/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
-
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c/small.png)](https://insight.sensiolabs.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c)
-[![knpbundles.com](http://knpbundles.com/Bukashk0zzz/FilterBundle/badge-short)](http://knpbundles.com/Bukashk0zzz/FilterBundle)
 
 About
 -----
