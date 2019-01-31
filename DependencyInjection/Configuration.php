@@ -17,8 +17,11 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('bukashk0zzz_filter');
+        $treeBuilder = new TreeBuilder('bukashk0zzz_filter');
+
+        $rootNode = \method_exists($treeBuilder, 'getRootNode')
+            ? $treeBuilder->getRootNode()
+            : $treeBuilder->root('bukashk0zzz_filter');
 
         $rootNode
             ->children()
