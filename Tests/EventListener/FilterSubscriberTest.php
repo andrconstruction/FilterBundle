@@ -1,12 +1,4 @@
 <?php declare(strict_types = 1);
-/*
- * This file is part of the FilterBundle
- *
- * (c) Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Bukashk0zzz\FilterBundle\Tests\EventListener;
 
@@ -77,11 +69,9 @@ class FilterSubscriberTest extends TestCase
      */
     private function mockEvent(string $eventType): \PHPUnit_Framework_MockObject_MockObject
     {
-        $lifeCycleEvent = $this->createPartialMock(
+        return $this->createPartialMock(
             '\Doctrine\ORM\Event\\'.$eventType,
             ['getEntityManager', 'getEntity', 'getEntityChangeSet']
         );
-
-        return $lifeCycleEvent;
     }
 }

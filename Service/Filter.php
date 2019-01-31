@@ -1,12 +1,4 @@
 <?php declare(strict_types = 1);
-/*
- * This file is part of the Bukashk0zzzFilterBundle
- *
- * (c) Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Bukashk0zzz\FilterBundle\Service;
 
@@ -46,18 +38,23 @@ class Filter
         }
 
         $reflectionClass = ClassUtils::newReflectionClass(\get_class($object));
+
         foreach ($reflectionClass->getProperties() as $property) {
             foreach ($this->annotationReader->getPropertyAnnotations($property) as $annotation) {
-                if ($annotation instanceof FilterAnnotation) {
-                    $property->setAccessible(true);
-                    $value = $property->getValue($object);
-
-                    if ($value) {
-                        $filter = $annotation->getFilter();
-                        $options = $annotation->getOptions();
-                        $property->setValue($object, $this->getZendInstance($filter, $options)->filter($value));
-                    }
+                if (!($annotation instanceof FilterAnnotation)) {
+                    continue;
                 }
+
+                $property->setAccessible(true);
+                $value = $property->getValue($object);
+
+                if (!$value) {
+                    continue;
+                }
+
+                $filter = $annotation->getFilter();
+                $options = $annotation->getOptions();
+                $property->setValue($object, $this->getZendInstance($filter, $options)->filter($value));
             }
         }
     }
@@ -74,6 +71,7 @@ class Filter
         $filter = new $class();
 
         $abstractFilterClass = AbstractFilter::class;
+
         if (!$filter instanceof $abstractFilterClass) {
             throw new \InvalidArgumentException("Filter class must extend $abstractFilterClass: $class");
         }

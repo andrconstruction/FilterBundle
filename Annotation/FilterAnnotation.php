@@ -1,12 +1,4 @@
 <?php declare(strict_types = 1);
-/*
- * This file is part of the Bukashk0zzzFilterBundle
- *
- * (c) Denis Golubovskiy <bukashk0zzz@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Bukashk0zzz\FilterBundle\Annotation;
 
@@ -47,9 +39,11 @@ final class FilterAnnotation implements Annotation
             $this->setFilter($parameters['filter']);
         }
 
-        if (\array_key_exists('options', $parameters)) {
-            $this->setOptions($parameters['options']);
+        if (!\array_key_exists('options', $parameters)) {
+            return;
         }
+
+        $this->setOptions($parameters['options']);
     }
 
     /**
