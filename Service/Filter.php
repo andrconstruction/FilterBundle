@@ -60,8 +60,8 @@ class Filter
     }
 
     /**
-     * @param string       $class
-     * @param mixed[]|null $options
+     * @param string            $class
+     * @param array<mixed>|null $options
      *
      * @return \Zend\Filter\FilterInterface
      */

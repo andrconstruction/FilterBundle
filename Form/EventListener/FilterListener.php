@@ -28,7 +28,7 @@ class FilterListener implements EventSubscriberInterface
     }
 
     /**
-     * @return string[]
+     * @return array<string>
      */
     public static function getSubscribedEvents(): array
     {

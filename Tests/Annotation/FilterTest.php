@@ -38,51 +38,50 @@ class FilterTest extends TestCase
 
     /**
      * Test annotation without any option
-     *
-     * @expectedException \LogicException
      */
     public function testAnnotationWithoutOptions(): void
     {
+        $this->expectException(\LogicException::class);
         new FilterAnnotation([]);
     }
 
     /**
      * Test annotation with wrong type for `filter` option
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testWrongTypeForFilterOption(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         new FilterAnnotation(['filter' => 123]);
     }
 
     /**
      * Test annotation with wrong zend filter class for `filter` option
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testWrongFilterClassForFilterOption(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         new FilterAnnotation(['filter' => 'test']);
     }
 
     /**
      * Test annotation with wrong type for `value` option
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testWrongTypeForValueOption(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         new FilterAnnotation(['value' => 123]);
     }
 
     /**
      * Test annotation with wrong type for `options` option
-     *
-     * @expectedException \TypeError
      */
     public function testWrongTypeForOptionsOption(): void
     {
+        $this->expectException(\TypeError::class);
+
         new FilterAnnotation(['filter' => 'StringTrim', 'options' => 123]);
     }
 }

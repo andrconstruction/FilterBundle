@@ -11,9 +11,9 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 class FormTypeExtensionWithoutFilterTest extends AbstractFormTypeExtension
 {
     /**
-     * {@inheritdoc}
+     * Setup
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->autoFilter = false;
         parent::setUp();

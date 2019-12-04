@@ -18,14 +18,14 @@ final class FilterAnnotation implements Annotation
     private $filter;
 
     /**
-     * @var mixed[] Options
+     * @var array<mixed> Options
      */
     private $options;
 
     /**
      * Constructor
      *
-     * @param mixed[] $parameters Filter parameters
+     * @param array<mixed> $parameters Filter parameters
      */
     public function __construct(array $parameters)
     {
@@ -79,7 +79,7 @@ final class FilterAnnotation implements Annotation
     }
 
     /**
-     * @return mixed[]|null
+     * @return array<mixed>|null
      */
     public function getOptions(): ?array
     {
@@ -87,7 +87,7 @@ final class FilterAnnotation implements Annotation
     }
 
     /**
-     * @param mixed[]|null $options
+     * @param array<mixed>|null $options
      *
      * @return FilterAnnotation
      */

@@ -22,6 +22,7 @@ return PhpCsFixer\Config::create()
         'blank_line_after_opening_tag' => false,
         'phpdoc_to_comment' => false,
         'phpdoc_no_empty_return' => false,
+        'no_superfluous_phpdoc_tags' => false,
         'strict_param' => true,
         'doctrine_annotation_indentation' => true,
         'mb_str_functions' => true,

@@ -22,9 +22,9 @@ class Bukashk0zzzFilterExtensionTest extends TestCase
     private $container;
 
     /**
-     * {@inheritdoc}
+     * Setup
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->extension = new Bukashk0zzzFilterExtension();
         $this->container = new ContainerBuilder();

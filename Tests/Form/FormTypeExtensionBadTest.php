@@ -12,11 +12,11 @@ class FormTypeExtensionBadTest extends AbstractFormTypeExtension
 {
     /**
      * Test annotation with wrong zend filter class for `filter` option
-     *
-     * @expectedException \InvalidArgumentException
      */
     public function testWrongFilterClassForFilterOption(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+
         $user = new BadUser();
         $form = $this->factory->create(UserType::class, $user, ['data_class' => BadUser::class]);
         $form->submit([

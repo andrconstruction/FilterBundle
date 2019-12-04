@@ -8,6 +8,8 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\ORM\Event\LifecycleEventArgs;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -26,7 +28,7 @@ class FilterSubscriberTest extends TestCase
         $lifeCycleEvent = $this->mockEvent('LifecycleEventArgs');
         $lifeCycleEvent->expects(static::once())->method('getEntity')->willReturn($user);
 
-        /** @var \Doctrine\ORM\Event\LifecycleEventArgs $lifeCycleEvent */
+        /** @var LifecycleEventArgs $lifeCycleEvent */
         $subscriber = new FilterSubscriber($filter);
         $subscriber->prePersist($lifeCycleEvent);
     }
@@ -42,7 +44,7 @@ class FilterSubscriberTest extends TestCase
         $lifeCycleEvent = $this->mockEvent('LifecycleEventArgs');
         $lifeCycleEvent->expects(static::once())->method('getEntity')->willReturn($user);
 
-        /** @var \Doctrine\ORM\Event\LifecycleEventArgs $lifeCycleEvent */
+        /** @var LifecycleEventArgs $lifeCycleEvent */
         $subscriber = new FilterSubscriber($filter);
         $subscriber->preUpdate($lifeCycleEvent);
     }
@@ -65,13 +67,13 @@ class FilterSubscriberTest extends TestCase
      *
      * @param string $eventType
      *
-     * @return \PHPUnit_Framework_MockObject_MockObject
+     * @return MockObject
      */
-    private function mockEvent(string $eventType): \PHPUnit_Framework_MockObject_MockObject
+    private function mockEvent(string $eventType): MockObject
     {
         return $this->createPartialMock(
             '\Doctrine\ORM\Event\\'.$eventType,
-            ['getEntityManager', 'getEntity', 'getEntityChangeSet']
+            ['getEntityManager', 'getEntity']
         );
     }
 }

@@ -19,9 +19,9 @@ abstract class AbstractFormTypeExtension extends TypeTestCase
     protected $autoFilter = true;
 
     /**
-     * {@inheritdoc}
+     * @return array<mixed>
      */
-    protected function getExtensions()
+    protected function getExtensions(): array
     {
         return \array_merge(parent::getExtensions(), [
             new FilterExtension(new Filter(new CachedReader(new AnnotationReader(), new ArrayCache())), $this->autoFilter),

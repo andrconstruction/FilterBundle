@@ -19,9 +19,9 @@ class FilterTest extends TestCase
     protected $filter;
 
     /**
-     * {@inheritdoc}
+     * Setup
      */
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
     }
