@@ -3,8 +3,8 @@
 namespace Bukashk0zzz\FilterBundle\Tests\Annotation;
 
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
-use PHPUnit\Framework\TestCase;
 use Laminas\Filter\StringTrim;
+use PHPUnit\Framework\TestCase;
 
 /**
  * FilterAnnotationTest

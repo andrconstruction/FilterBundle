@@ -34,6 +34,7 @@ class FilterListener implements EventSubscriberInterface
     {
         return [
             FormEvents::POST_SUBMIT => 'onPostSubmit',
+            FormEvents::PRE_SUBMIT => 'onPreSubmit',
         ];
     }
 
@@ -43,6 +44,22 @@ class FilterListener implements EventSubscriberInterface
      * @return void
      */
     public function onPostSubmit(FormEvent $event): void
+    {
+        $clientData = $event->getData();
+
+        if (!\is_object($clientData)) {
+            return;
+        }
+
+        $this->filterService->filterEntity($clientData);
+    }
+
+    /**
+     * @param FormEvent $event
+     *
+     * @return void
+     */
+    public function onPreSubmit(FormEvent $event): void
     {
         $clientData = $event->getData();
 
