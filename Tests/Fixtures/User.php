@@ -3,6 +3,7 @@
 namespace Bukashk0zzz\FilterBundle\Tests\Fixtures;
 
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User Entity
@@ -10,6 +11,11 @@ use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
 class User
 {
     /**
+     * @Assert\Length(
+     *     min=0,
+     *     max=1
+     * )
+     *
      * @Filter("StripTags", options={"allowTags": "br"})
      * @Filter("StringTrim")
      * @Filter("StripNewlines")
