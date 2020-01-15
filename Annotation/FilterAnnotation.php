@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping\Annotation;
 final class FilterAnnotation implements Annotation
 {
     /**
-     * @var string ZendFilter name
+     * @var string LaminasFilter name
      */
     private $filter;
 
@@ -66,7 +66,7 @@ final class FilterAnnotation implements Annotation
         }
 
         if ($filter && \mb_strpos($filter, '\\') === false) {
-            $filter = 'Zend\Filter\\'.$filter;
+            $filter = 'Laminas\Filter\\'.$filter;
         }
 
         if (!\class_exists($filter)) {

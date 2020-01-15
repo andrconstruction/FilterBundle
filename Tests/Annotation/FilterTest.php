@@ -3,8 +3,8 @@
 namespace Bukashk0zzz\FilterBundle\Tests\Annotation;
 
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
+use Laminas\Filter\StringTrim;
 use PHPUnit\Framework\TestCase;
-use Zend\Filter\StringTrim;
 
 /**
  * FilterAnnotationTest
@@ -56,7 +56,7 @@ class FilterTest extends TestCase
     }
 
     /**
-     * Test annotation with wrong zend filter class for `filter` option
+     * Test annotation with wrong laminas filter class for `filter` option
      */
     public function testWrongFilterClassForFilterOption(): void
     {

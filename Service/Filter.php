@@ -5,8 +5,8 @@ namespace Bukashk0zzz\FilterBundle\Service;
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
 use Doctrine\Common\Annotations\CachedReader;
 use Doctrine\Common\Util\ClassUtils;
-use Zend\Filter\AbstractFilter;
-use Zend\Filter\FilterInterface;
+use Laminas\Filter\AbstractFilter;
+use Laminas\Filter\FilterInterface;
 
 /**
  * Class Filter
@@ -54,7 +54,7 @@ class Filter
 
                 $filter = $annotation->getFilter();
                 $options = $annotation->getOptions();
-                $property->setValue($object, $this->getZendInstance($filter, $options)->filter($value));
+                $property->setValue($object, $this->getLaminasInstance($filter, $options)->filter($value));
             }
         }
     }
@@ -63,9 +63,9 @@ class Filter
      * @param string            $class
      * @param array<mixed>|null $options
      *
-     * @return \Zend\Filter\FilterInterface
+     * @return \Laminas\Filter\FilterInterface
      */
-    protected function getZendInstance(string $class, ?array $options): FilterInterface
+    protected function getLaminasInstance(string $class, ?array $options): FilterInterface
     {
         /** @var AbstractFilter $filter */
         $filter = new $class();
