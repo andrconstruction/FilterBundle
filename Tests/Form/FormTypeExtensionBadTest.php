@@ -11,7 +11,7 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 class FormTypeExtensionBadTest extends AbstractFormTypeExtension
 {
     /**
-     * Test annotation with wrong zend filter class for `filter` option
+     * Test annotation with wrong laminas filter class for `filter` option
      */
     public function testWrongFilterClassForFilterOption(): void
     {

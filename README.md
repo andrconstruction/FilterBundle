@@ -11,9 +11,9 @@
 
 About
 -----
-This bundle add a service that can be used to filter object values based on annotations. [ZendFilters](https://github.com/zendframework/zend-filter) used for filtering.
+This bundle add a service that can be used to filter object values based on annotations. [Laminas filter](https://github.com/laminas/laminas-filter) old [ZendFilters](https://github.com/zendframework/zend-filter) used for filtering.
 Also bundle can filter your forms if it finds a annotated entity attached. If `auto_filter_forms` enabled entities will be filtered before they are validated.
-[Zend filters doc](http://framework.zend.com/manual/current/en/modules/zend.filter.set.html)
+[Laminas filters doc](https://docs.laminas.dev/laminas-filter/)
 
 Installation Symfony Flex
 ------------
@@ -61,12 +61,12 @@ Add the next class to the `use` section of your entity class.
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
 ```
 
-Annotation `@Filter` has one required option *filter* which value should be name of Zend filter class.
+Annotation `@Filter` has one required option *filter* which value should be name of Laminas filter class.
 It can be set like this `@Filter("StringTrim")` or `@Filter(filter="AppBundle\Filter\MyCustomFilter")`.
 
-`AppBundle\Filter\MyCustomFilter` - in this example, must be class that extends `\Zend\Filter\AbstractFilter`
+`AppBundle\Filter\MyCustomFilter` - in this example, must be class that extends `\Laminas\Filter\AbstractFilter`
 
-Also there is one not required option `options` - it must be array type and will pass to Zend filter using `setOptions` method from zend filter. 
+Also there is one not required option `options` - it must be array type and will pass to Laminas filter using `setOptions` method from Laminas filter. 
 
 Example entity
 --------------
