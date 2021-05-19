@@ -3,7 +3,7 @@
 namespace Bukashk0zzz\FilterBundle\Service;
 
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
-use Doctrine\Common\Annotations\CachedReader;
+use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
 use Laminas\Filter\AbstractFilter;
 use Laminas\Filter\FilterInterface;
@@ -14,16 +14,16 @@ use Laminas\Filter\FilterInterface;
 class Filter
 {
     /**
-     * @var CachedReader Cached annotation reader
+     * @var Reader Cached annotation reader
      */
     protected $annotationReader;
 
     /**
      * Filter constructor.
      *
-     * @param CachedReader $annotationReader
+     * @param Reader $annotationReader
      */
-    public function __construct(CachedReader $annotationReader)
+    public function __construct(Reader $annotationReader)
     {
         $this->annotationReader = $annotationReader;
     }
