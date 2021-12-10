@@ -7,8 +7,6 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 
-[![SensioLabsInsight](https://insight.symfony.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c/big.svg)](https://insight.sensiolabs.com/projects/64a668ef-4f7c-4e53-89f9-a31aff7c315c)
-
 About
 -----
 This bundle add a service that can be used to filter object values based on annotations. [Laminas filter](https://github.com/laminas/laminas-filter) old [ZendFilters](https://github.com/zendframework/zend-filter) used for filtering.
