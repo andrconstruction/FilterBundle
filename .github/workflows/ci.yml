@@ -33,6 +33,9 @@ jobs:
       - name: Configure Symfony
         run: composer config extra.symfony.require "${{ matrix.symfony }}"
 
+      - name: Configure CS plugin
+        run: composer config --no-plugins allow-plugins.dealerdirect/phpcodesniffer-composer-installer "true"
+
       - name: Get Composer Cache Directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
