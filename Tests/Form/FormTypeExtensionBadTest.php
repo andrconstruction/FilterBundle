@@ -4,6 +4,7 @@ namespace Bukashk0zzz\FilterBundle\Tests\Form;
 
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
+use Laminas\ServiceManager\Exception\InvalidServiceException;
 
 /**
  * Test the FormTypeExtensionBadTest.
@@ -17,7 +18,7 @@ final class FormTypeExtensionBadTest extends AbstractFormTypeExtension
      */
     public function testWrongFilterClassForFilterOption(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidServiceException::class);
 
         $user = new BadUser();
         $form = $this->factory->create(UserType::class, $user, ['data_class' => BadUser::class]);
