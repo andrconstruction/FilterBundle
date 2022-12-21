@@ -78,20 +78,17 @@ use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
  */
 class User
 {
-    /**
-     * @Filter("StripTags", options={"allowTags": "br"})
-     * @Filter("StringTrim")
-     * @Filter("StripNewlines")
-     * @var string
-     */
+    #[Filter(parameters: [
+        'filter' => 'StripTags',
+        'options' => ['allowTags' => 'br']
+    ])]
+    #[Filter(parameters: ['filter' => 'StringTrim'])]
+    #[Filter(parameters: ['filter' => 'StripNewlines'])]
     protected $name;
 
-    /**
-     * @Filter("StripTags")
-     * @Filter("StringTrim")
-     * @Filter("AppBundle\Filter\MyCustomFilter")
-     * @var string
-     */
+    #[Filter(parameters: ['filter' => 'StripTags'])]
+    #[Filter(parameters: ['filter' => 'StringTrim'])]
+    #[Filter(parameters: ['filter' => 'AppBundle\Filter\MyCustomFilter'])]
     protected $about;
 }
 
