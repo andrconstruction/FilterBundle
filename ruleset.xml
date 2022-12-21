@@ -106,5 +106,7 @@
     <arg name="encoding" value="utf-8"/>
     <arg name="extensions" value="php"/>
 
-    <file>./src</file>
+
+    <exclude-pattern>vendor/</exclude-pattern>
+    <file>./</file>
 </ruleset>
