@@ -31,7 +31,7 @@ class FilterExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      */
-    protected function loadTypeExtensions()
+    protected function loadTypeExtensions(): array
     {
         return [
             new FormTypeExtension($this->filter, $this->autoFilter),

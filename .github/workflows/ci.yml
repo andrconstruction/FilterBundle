@@ -59,6 +59,3 @@ jobs:
 
       - name: Run tests
         run: ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage.xml
-
-      - name: Run codecov
-        run: bash <(curl -s https://codecov.io/bash)

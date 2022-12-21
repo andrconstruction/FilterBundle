@@ -5,8 +5,9 @@ namespace Bukashk0zzz\FilterBundle\Tests\Service;
 use Bukashk0zzz\FilterBundle\Service\Filter;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\CachedReader;
-use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
  * Test the FilterTest.
@@ -25,7 +26,11 @@ final class FilterTest extends TestCase
      */
     protected function setUp(): void
     {
-        $this->filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
+        $cache = DoctrineProvider::wrap(
+            new ArrayAdapter()
+        );
+
+        $this->filter = new Filter(new CachedReader(new AnnotationReader(), $cache));
     }
 
     /**

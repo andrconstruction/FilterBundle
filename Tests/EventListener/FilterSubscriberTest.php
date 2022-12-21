@@ -7,10 +7,11 @@ use Bukashk0zzz\FilterBundle\Service\Filter;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\CachedReader;
-use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\Common\Cache\Psr6\DoctrineProvider;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 /**
  * FilterSubscriberTest.
@@ -25,7 +26,10 @@ final class FilterSubscriberTest extends TestCase
     public function testPersist(): void
     {
         $user = new User();
-        $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
+        $cache = DoctrineProvider::wrap(
+            new ArrayAdapter()
+        );
+        $filter = new Filter(new CachedReader(new AnnotationReader(), $cache));
 
         $lifeCycleEvent = $this->mockEvent('LifecycleEventArgs');
         $lifeCycleEvent->expects(static::once())->method('getEntity')->willReturn($user);
@@ -41,7 +45,10 @@ final class FilterSubscriberTest extends TestCase
     public function testUpdate(): void
     {
         $user = new User();
-        $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
+        $cache = DoctrineProvider::wrap(
+            new ArrayAdapter()
+        );
+        $filter = new Filter(new CachedReader(new AnnotationReader(), $cache));
 
         $lifeCycleEvent = $this->mockEvent('LifecycleEventArgs');
         $lifeCycleEvent->expects(static::once())->method('getEntity')->willReturn($user);
@@ -56,7 +63,10 @@ final class FilterSubscriberTest extends TestCase
      */
     public function testSubscription(): void
     {
-        $filter = new Filter(new CachedReader(new AnnotationReader(), new ArrayCache()));
+        $cache = DoctrineProvider::wrap(
+            new ArrayAdapter()
+        );
+        $filter = new Filter(new CachedReader(new AnnotationReader(), $cache));
         $subscriber = new FilterSubscriber($filter);
         static::assertSame([
             'prePersist',
