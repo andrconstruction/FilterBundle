@@ -13,10 +13,12 @@ jobs:
     strategy:
       matrix:
         php:
+          - '8.0'
           - '8.1'
         dependency:
           - ''
         symfony:
+          - '5.4.*'
           - '6.1.*'
       fail-fast: false
     steps:
