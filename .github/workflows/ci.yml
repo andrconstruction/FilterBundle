@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+jobs:
+  tests:
+    name: PHPUnit PHP ${{ matrix.php }} ${{ matrix.dependency }} (Symfony ${{ matrix.symfony }})
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        php:
+          - '8.1'
+        dependency:
+          - ''
+        symfony:
+          - '6.1.*'
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: pcov
+          tools: flex
+
+      - name: Configure Symfony
+        run: composer config extra.symfony.require "${{ matrix.symfony }}"
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ matrix.php }}-composer-
+
+      - name: Update project dependencies
+        if: matrix.dependency == ''
+        run: composer update --no-progress --ansi --prefer-stable
+
+      - name: Validate composer
+        run: composer validate --strict --no-check-lock
+
+      - name: Run CS
+        run: ./vendor/bin/phpcs -p --standard=./ruleset.xml
+
+      - name: Run tests
+        run: ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage.xml
+
+      - name: Run codecov
+        run: bash <(curl -s https://codecov.io/bash)

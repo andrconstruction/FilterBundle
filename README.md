@@ -1,8 +1,6 @@
 # Symfony Filter Bundle
 
-[![Build Status](https://img.shields.io/scrutinizer/build/g/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://travis-ci.org/Bukashk0zzz/FilterBundle)
 [![Code Coverage](https://img.shields.io/codecov/c/github/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://codecov.io/github/Bukashk0zzz/FilterBundle)
-[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/Bukashk0zzz/FilterBundle.svg?style=flat-square)](https://scrutinizer-ci.com/g/Bukashk0zzz/FilterBundle/?branch=master)
 [![License](https://img.shields.io/packagist/l/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Latest Stable Version](https://img.shields.io/packagist/v/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
 [![Total Downloads](https://img.shields.io/packagist/dt/Bukashk0zzz/filter-bundle.svg?style=flat-square)](https://packagist.org/packages/Bukashk0zzz/filter-bundle)
