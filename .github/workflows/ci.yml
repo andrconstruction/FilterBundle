@@ -22,8 +22,8 @@ jobs:
           - '6.1.*'
         exclude:
           - php: '8.0'
-            symfony: '4.4.*'
-            dependency: '6.1.*'
+            symfony: '6.1.*'
+            dependency: ''
       fail-fast: false
     steps:
       - name: Checkout
