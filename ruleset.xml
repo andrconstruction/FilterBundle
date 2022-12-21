@@ -2,18 +2,6 @@
 <ruleset name="Coding standard">
     <description>Coding standard.</description>
 
-    <rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony"/>
-    <rule ref="./vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml" />
-
-    <rule ref="./vendor/escapestudios/symfony2-coding-standard/Symfony">
-        <exclude name="Symfony.Functions.Arguments.Invalid"/>
-        <exclude name="Symfony.Commenting.License.Warning"/>
-        <exclude name="Symfony.Commenting.Annotations.Invalid"/>
-        <exclude name="Symfony.ControlStructure.YodaConditions.Invalid"/>
-        <exclude name="Symfony.ControlStructure.UnaryOperators.Invalid"/>
-        <exclude name="Symfony.Functions.ReturnType.Invalid"/>
-    </rule>
-
     <rule ref="./vendor/slevomat/coding-standard/SlevomatCodingStandard/ruleset.xml">
         <exclude name="SlevomatCodingStandard.TypeHints.TypeHintDeclaration.UselessDocComment"/>
         <exclude name="SlevomatCodingStandard.ControlStructures.RequireYodaComparison.RequiredYodaComparison"/>
@@ -35,7 +23,29 @@
         <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming.SuperfluousSuffix"/>
         <exclude name="SlevomatCodingStandard.ControlStructures.UselessTernaryOperator.UselessTernaryOperator"/>
         <exclude name="SlevomatCodingStandard.Functions.TrailingCommaInCall.MissingTrailingComma"/>
-        <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming.SuperfluousPrefix"/>
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLineDocComment.MultiLineDocComment"/>
+        <exclude name="SlevomatCodingStandard.Files.LineLength.LineTooLong"/>
+        <exclude name="SlevomatCodingStandard.Numbers.RequireNumericLiteralSeparator.RequiredNumericLiteralSeparator"/>
+        <exclude name="SlevomatCodingStandard.Classes.ClassStructure.IncorrectGroupOrder"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingNativeTypeHint"/>
+        <exclude name="SlevomatCodingStandard.Functions.DisallowArrowFunction.DisallowedArrowFunction"/>
+        <exclude name="SlevomatCodingStandard.Whitespaces.DuplicateSpaces.DuplicateSpaces"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireMultiLineCondition.RequiredMultiLineCondition"/>
+        <exclude name="SlevomatCodingStandard.Functions.RequireMultiLineCall.RequiredMultiLineCall"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.DeclareStrictTypes.IncorrectWhitespaceBeforeDeclare"/>
+        <exclude name="SlevomatCodingStandard.Files.FunctionLength.FunctionLength"/>
+        <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion.DisallowedConstructorPropertyPromotion"/>
+        <exclude name="SlevomatCodingStandard.Functions.FunctionLength.FunctionLength"/>
+        <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInDeclaration.DisallowedTrailingComma"/>
+        <exclude name="SlevomatCodingStandard.Classes.RequireSingleLineMethodSignature.RequiredSingleLineSignature"/>
+        <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInCall.DisallowedTrailingComma"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ReturnTypeHint.MissingTraversableTypeHintSpecification"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingTraversableTypeHintSpecification"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.PropertyTypeHint.MissingTraversableTypeHintSpecification"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowNullSafeObjectOperator.DisallowedNullSafeObjectOperator"/>
+        <exclude name="SlevomatCodingStandard.PHP.RequireExplicitAssertion.RequiredExplicitAssertion"/>
+        <exclude name="SlevomatCodingStandard.Classes.RequireAbstractOrFinal.ClassNeitherAbstractNorFinal"/>
+        <exclude name="SlevomatCodingStandard.Functions.DisallowNamedArguments.DisallowedNamedArgument"/>
     </rule>
 
     <rule ref="SlevomatCodingStandard.Namespaces.ReferenceUsedNamesOnly">
@@ -60,6 +70,30 @@
         </properties>
     </rule>
 
+    <rule ref="SlevomatCodingStandard.Complexity.Cognitive">
+        <properties>
+            <property name="maxComplexity" type="int" value="20" />
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Files.FileLength">
+        <properties>
+            <property name="maxLinesLength" type="int" value="1000" />
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Files.FileLength">
+        <properties>
+            <property name="maxLinesLength" type="int" value="1000" />
+        </properties>
+    </rule>
+
+    <rule ref="SlevomatCodingStandard.Classes.ClassLength">
+        <properties>
+            <property name="maxLinesLength" type="int" value="1000" />
+        </properties>
+    </rule>
+
     <rule ref="Squiz.Commenting.FunctionComment.MissingParamComment">
         <severity>0</severity>
     </rule>
@@ -71,9 +105,6 @@
     <arg name="colors"/>
     <arg name="encoding" value="utf-8"/>
     <arg name="extensions" value="php"/>
-    <arg name="parallel" value="128" />
 
-    <exclude-pattern>vendor/</exclude-pattern>
-
-    <file>./</file>
+    <file>./src</file>
 </ruleset>
