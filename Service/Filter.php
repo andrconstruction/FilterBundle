@@ -5,8 +5,8 @@ namespace Bukashk0zzz\FilterBundle\Service;
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Util\ClassUtils;
-use Laminas\Filter\AbstractFilter;
-use Laminas\Filter\FilterInterface;
+use Laminas\Filter\FilterChain;
+use ReflectionProperty;
 
 /**
  * Class Filter.
@@ -35,47 +35,54 @@ class Filter
         $reflectionClass = ClassUtils::newReflectionClass($object::class);
 
         foreach ($reflectionClass->getProperties() as $property) {
-            foreach ($this->annotationReader->getPropertyAnnotations($property) as $annotation) {
-                if (!($annotation instanceof FilterAnnotation)) {
-                    continue;
-                }
+            $attributes = $this->getAttributes($property);
 
-                $property->setAccessible(true);
-                $value = $property->getValue($object);
-
-                if (!$value) {
-                    continue;
-                }
-
-                $filter = $annotation->getFilter();
-                $options = $annotation->getOptions();
-                $property->setValue($object, $this->getLaminasInstance($filter, $options)->filter($value));
+            if (empty($attributes)) {
+                continue;
             }
+
+            $property->setAccessible(true);
+            $value = $property->getValue($object);
+
+            if (empty($value)) {
+                continue;
+            }
+
+            $filter = new FilterChain();
+            foreach ($attributes as $attribute) {
+                $filter->attachByName($attribute->getFilter(), $attribute->getOptions());
+            }
+
+            $property->setValue($object, $filter->filter($value));
         }
     }
 
     /**
-     * @param array<mixed>|null $options
+     * Get Annotations of PHP Attributes.
+     *
+     * @return array<FilterAnnotation>
      */
-    protected function getLaminasInstance(string $class, ?array $options): FilterInterface
+    private function getAttributes(ReflectionProperty $property): array
     {
-        /** @var AbstractFilter $filter */
-        $filter = new $class();
+        $annotations = $this->annotationReader->getPropertyAnnotations($property);
 
-        $abstractFilterClass = AbstractFilter::class;
-
-        if (!$filter instanceof $abstractFilterClass) {
-            throw new \InvalidArgumentException("Filter class must extend {$abstractFilterClass}: {$class}");
-        }
-
-        try {
-            if ($options !== null && \count($options) !== 0) {
-                $filter->setOptions($options);
+        $attributes = [];
+        foreach ($annotations as $annotation) {
+            if ($annotation instanceof FilterAnnotation) {
+                $attributes[] = $annotation;
             }
-
-            return $filter;
-        } catch (\Throwable $e) {
-            return new $class($options);
         }
+
+        // If we get an empty array with the annotations, we try PHP Attributes
+        if (empty($attributes)) {
+            $attrs = $property->getAttributes(FilterAnnotation::class);
+
+            $attributes = [];
+            foreach ($attrs as $attr) {
+                $attributes[] = $attr->newInstance();
+            }
+        }
+
+        return $attributes;
     }
 }
