@@ -5,7 +5,7 @@ namespace Bukashk0zzz\FilterBundle\Tests\Fixtures;
 use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
 
 /**
- * BadUser Entity
+ * BadUser Entity.
  */
 class BadUser
 {
@@ -21,40 +21,24 @@ class BadUser
      */
     protected $about;
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return BadUser
-     */
-    public function setName(string $name): BadUser
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAbout(): ?string
     {
         return $this->about;
     }
 
-    /**
-     * @param string $about
-     *
-     * @return BadUser
-     */
-    public function setAbout(string $about): BadUser
+    public function setAbout(string $about): self
     {
         $this->about = $about;
 

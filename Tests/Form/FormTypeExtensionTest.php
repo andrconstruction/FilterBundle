@@ -6,12 +6,14 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /**
- * Test the FormTypeExtension
+ * Test the FormTypeExtension.
+ *
+ * @internal
  */
-class FormTypeExtensionTest extends AbstractFormTypeExtension
+final class FormTypeExtensionTest extends AbstractFormTypeExtension
 {
     /**
-     * Test form type extension
+     * Test form type extension.
      */
     public function testType(): void
     {

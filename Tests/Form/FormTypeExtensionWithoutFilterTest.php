@@ -6,21 +6,24 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\User;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /**
- * Test the FormTypeExtensionWithoutFilterTest
+ * Test the FormTypeExtensionWithoutFilterTest.
+ *
+ * @internal
  */
-class FormTypeExtensionWithoutFilterTest extends AbstractFormTypeExtension
+final class FormTypeExtensionWithoutFilterTest extends AbstractFormTypeExtension
 {
     /**
-     * Setup
+     * Setup.
      */
-    public function setUp(): void
+    protected function setUp(): void
     {
         $this->autoFilter = false;
+
         parent::setUp();
     }
 
     /**
-     * Test form type extension without filter
+     * Test form type extension without filter.
      */
     public function testTypeWithoutFilter(): void
     {

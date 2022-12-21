@@ -7,9 +7,11 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Bukashk0zzzFilterExtensionTest
+ * Bukashk0zzzFilterExtensionTest.
+ *
+ * @internal
  */
-class Bukashk0zzzFilterExtensionTest extends TestCase
+final class Bukashk0zzzFilterExtensionTest extends TestCase
 {
     /**
      * @var Bukashk0zzzFilterExtension Bukashk0zzzFilterExtension
@@ -22,7 +24,7 @@ class Bukashk0zzzFilterExtensionTest extends TestCase
     private $container;
 
     /**
-     * Setup
+     * Setup.
      */
     protected function setUp(): void
     {
@@ -35,7 +37,7 @@ class Bukashk0zzzFilterExtensionTest extends TestCase
     }
 
     /**
-     * Test load extension
+     * Test load extension.
      */
     public function testLoadExtension(): void
     {

@@ -6,12 +6,14 @@ use Bukashk0zzz\FilterBundle\Tests\Fixtures\BadUser;
 use Bukashk0zzz\FilterBundle\Tests\Fixtures\UserType;
 
 /**
- * Test the FormTypeExtensionBadTest
+ * Test the FormTypeExtensionBadTest.
+ *
+ * @internal
  */
-class FormTypeExtensionBadTest extends AbstractFormTypeExtension
+final class FormTypeExtensionBadTest extends AbstractFormTypeExtension
 {
     /**
-     * Test annotation with wrong laminas filter class for `filter` option
+     * Test annotation with wrong laminas filter class for `filter` option.
      */
     public function testWrongFilterClassForFilterOption(): void
     {

@@ -1,42 +1,38 @@
 <?php declare(strict_types = 1);
 
 $finder = PhpCsFixer\Finder::create()
+    ->in([__DIR__])
     ->exclude('vendor')
-    ->in(__DIR__)
 ;
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR1' => true,
         '@PSR2' => true,
+        '@PhpCsFixer' => true,
+        '@PhpCsFixer:risky' => true,
         '@Symfony' => true,
         '@Symfony:risky' => true,
+        '@DoctrineAnnotation' => true,
         '@PHP70Migration' => true,
         '@PHP70Migration:risky' => true,
         '@PHP71Migration' => true,
-        'phpdoc_summary' => false,
+        '@PHP71Migration:risky' => true,
+        '@PHP73Migration' => true,
+        '@PHPUnit75Migration:risky' => true,
         'yoda_style' => false,
-        'self_accessor' => false,
-        'combine_consecutive_unsets' => true,
         'blank_line_after_opening_tag' => false,
-        'phpdoc_to_comment' => false,
         'phpdoc_no_empty_return' => false,
-        'no_superfluous_phpdoc_tags' => false,
-        'strict_param' => true,
-        'doctrine_annotation_indentation' => true,
         'mb_str_functions' => true,
-        'native_function_invocation' => true,
-        'no_short_echo_tag' => true,
-        'no_unreachable_default_argument_value' => true,
-        'no_useless_else' => true,
-        'no_useless_return' => true,
-        'ordered_class_elements' => true,
-        'phpdoc_add_missing_param_annotation' => true,
-        'phpdoc_order' => true,
-        'simplified_null_return' => false,
-        'strict_comparison' => true,
-        'ordered_imports' => ['sortAlgorithm' => 'alpha'],
+        'simplified_null_return' => true,
+        'static_lambda' => true,
+        'ordered_interfaces' => true,
+        'phpdoc_to_param_type' => true,
+        'php_unit_test_class_requires_covers' => false,
+        'native_function_invocation' => false,
+        'linebreak_after_opening_tag' => false,
+        'phpdoc_to_return_type' => true,
         'declare_equal_normalize' => ['space' => 'single'],
         'array_syntax' => ['syntax' => 'short'],
         'list_syntax' => ['syntax' => 'short'],
@@ -44,4 +40,4 @@ return PhpCsFixer\Config::create()
         'general_phpdoc_annotation_remove' => ['annotations' => ['author', 'created', 'version', 'package', 'copyright', 'license', 'throws']],
     ])
     ->setFinder($finder)
-;
+    ;

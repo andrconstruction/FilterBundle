@@ -13,12 +13,14 @@ use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * FilterSubscriberTest
+ * FilterSubscriberTest.
+ *
+ * @internal
  */
-class FilterSubscriberTest extends TestCase
+final class FilterSubscriberTest extends TestCase
 {
     /**
-     * Test persist event
+     * Test persist event.
      */
     public function testPersist(): void
     {
@@ -34,7 +36,7 @@ class FilterSubscriberTest extends TestCase
     }
 
     /**
-     * Test update event
+     * Test update event.
      */
     public function testUpdate(): void
     {
@@ -50,7 +52,7 @@ class FilterSubscriberTest extends TestCase
     }
 
     /**
-     * Test get subscribed events
+     * Test get subscribed events.
      */
     public function testSubscription(): void
     {
@@ -63,17 +65,13 @@ class FilterSubscriberTest extends TestCase
     }
 
     /**
-     * Mock a lifeCycleEventArgs Object
-     *
-     * @param string $eventType
-     *
-     * @return MockObject
+     * Mock a lifeCycleEventArgs Object.
      */
     private function mockEvent(string $eventType): MockObject
     {
         return $this->createPartialMock(
             '\Doctrine\ORM\Event\\'.$eventType,
-            ['getEntityManager', 'getEntity']
+            ['getEntityManager', 'getEntity'],
         );
     }
 }

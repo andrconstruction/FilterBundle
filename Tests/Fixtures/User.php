@@ -6,7 +6,7 @@ use Bukashk0zzz\FilterBundle\Annotation\FilterAnnotation as Filter;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * User Entity
+ * User Entity.
  */
 class User
 {
@@ -32,40 +32,24 @@ class User
      */
     protected $about;
 
-    /**
-     * @return string|null
-     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return User
-     */
-    public function setName(string $name): User
+    public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    /**
-     * @return string|null
-     */
     public function getAbout(): ?string
     {
         return $this->about;
     }
 
-    /**
-     * @param string $about
-     *
-     * @return User
-     */
-    public function setAbout(string $about): User
+    public function setAbout(string $about): self
     {
         $this->about = $about;
 

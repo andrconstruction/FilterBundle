@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 /**
- * Class FormTypeExtension
+ * Class FormTypeExtension.
  */
 class FormTypeExtension extends AbstractTypeExtension
 {
@@ -25,9 +25,6 @@ class FormTypeExtension extends AbstractTypeExtension
 
     /**
      * FilterListener constructor.
-     *
-     * @param Filter $filterService
-     * @param bool   $autoFilter
      */
     public function __construct(Filter $filterService, bool $autoFilter)
     {
@@ -54,7 +51,7 @@ class FormTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if (!$this->autoFilter) {
             return;

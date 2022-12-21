@@ -7,23 +7,25 @@ use Laminas\Filter\StringTrim;
 use PHPUnit\Framework\TestCase;
 
 /**
- * FilterAnnotationTest
+ * FilterAnnotationTest.
+ *
+ * @internal
  */
-class FilterTest extends TestCase
+final class FilterTest extends TestCase
 {
     /**
-     * Test annotation with `value` option
+     * Test annotation with `value` option.
      */
     public function testValueOption(): void
     {
         $annotation = new FilterAnnotation(['value' => 'StringTrim']);
 
-        static::assertEquals(StringTrim::class, $annotation->getFilter());
+        static::assertSame(StringTrim::class, $annotation->getFilter());
         static::assertEmpty($annotation->getOptions());
     }
 
     /**
-     * Test annotation with all options
+     * Test annotation with all options.
      */
     public function testAllOptions(): void
     {
@@ -32,12 +34,12 @@ class FilterTest extends TestCase
             'options' => ['charlist' => 'test'],
         ]);
 
-        static::assertEquals(StringTrim::class, $annotation->getFilter());
-        static::assertEquals(['charlist' => 'test'], $annotation->getOptions());
+        static::assertSame(StringTrim::class, $annotation->getFilter());
+        static::assertSame(['charlist' => 'test'], $annotation->getOptions());
     }
 
     /**
-     * Test annotation without any option
+     * Test annotation without any option.
      */
     public function testAnnotationWithoutOptions(): void
     {
@@ -46,7 +48,7 @@ class FilterTest extends TestCase
     }
 
     /**
-     * Test annotation with wrong type for `filter` option
+     * Test annotation with wrong type for `filter` option.
      */
     public function testWrongTypeForFilterOption(): void
     {
@@ -56,7 +58,7 @@ class FilterTest extends TestCase
     }
 
     /**
-     * Test annotation with wrong laminas filter class for `filter` option
+     * Test annotation with wrong laminas filter class for `filter` option.
      */
     public function testWrongFilterClassForFilterOption(): void
     {
@@ -66,7 +68,7 @@ class FilterTest extends TestCase
     }
 
     /**
-     * Test annotation with wrong type for `value` option
+     * Test annotation with wrong type for `value` option.
      */
     public function testWrongTypeForValueOption(): void
     {
@@ -76,7 +78,7 @@ class FilterTest extends TestCase
     }
 
     /**
-     * Test annotation with wrong type for `options` option
+     * Test annotation with wrong type for `options` option.
      */
     public function testWrongTypeForOptionsOption(): void
     {

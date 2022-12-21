@@ -55,7 +55,7 @@ jobs:
         run: composer validate --strict --no-check-lock
 
       - name: Run CS
-        run: ./vendor/bin/phpcs -p --standard=./ruleset.xml
+        run:  ./vendor/bin/php-cs-fixer fix --config=./.php-cs-fixer.dist.php -v --dry-run
 
       - name: Run tests
         run: ./vendor/bin/phpunit -c phpunit.xml.dist --coverage-clover=coverage.xml

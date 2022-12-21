@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 
 /**
- * Class FilterListener
+ * Class FilterListener.
  */
 class FilterListener implements EventSubscriberInterface
 {
@@ -19,8 +19,6 @@ class FilterListener implements EventSubscriberInterface
 
     /**
      * FilterListener constructor.
-     *
-     * @param Filter $filterService
      */
     public function __construct(Filter $filterService)
     {
@@ -38,11 +36,6 @@ class FilterListener implements EventSubscriberInterface
         ];
     }
 
-    /**
-     * @param FormEvent $event
-     *
-     * @return void
-     */
     public function onPostSubmit(FormEvent $event): void
     {
         $clientData = $event->getData();
@@ -54,11 +47,6 @@ class FilterListener implements EventSubscriberInterface
         $this->filterService->filterEntity($clientData);
     }
 
-    /**
-     * @param FormEvent $event
-     *
-     * @return void
-     */
     public function onPreSubmit(FormEvent $event): void
     {
         $clientData = $event->getData();

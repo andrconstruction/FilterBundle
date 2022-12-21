@@ -8,14 +8,14 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 /**
- * This is the class that loads and manages Bukashk0zzzFilterBundle configuration
+ * This is the class that loads and manages Bukashk0zzzFilterBundle configuration.
  */
 class Bukashk0zzzFilterExtension extends Extension
 {
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    public function load(array $configs, ContainerBuilder $container): void
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
@@ -24,6 +24,7 @@ class Bukashk0zzzFilterExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->getDefinition('bukashk0zzz_filter.form_type_extension')
-            ->addArgument($config['auto_filter_forms']);
+            ->addArgument($config['auto_filter_forms'])
+        ;
     }
 }

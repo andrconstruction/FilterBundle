@@ -9,7 +9,7 @@ use Laminas\Filter\AbstractFilter;
 use Laminas\Filter\FilterInterface;
 
 /**
- * Class Filter
+ * Class Filter.
  */
 class Filter
 {
@@ -20,24 +20,19 @@ class Filter
 
     /**
      * Filter constructor.
-     *
-     * @param Reader $annotationReader
      */
     public function __construct(Reader $annotationReader)
     {
         $this->annotationReader = $annotationReader;
     }
 
-    /**
-     * @param mixed $object
-     */
-    public function filterEntity($object): void
+    public function filterEntity(mixed $object): void
     {
         if ($object === null) {
             return;
         }
 
-        $reflectionClass = ClassUtils::newReflectionClass(\get_class($object));
+        $reflectionClass = ClassUtils::newReflectionClass($object::class);
 
         foreach ($reflectionClass->getProperties() as $property) {
             foreach ($this->annotationReader->getPropertyAnnotations($property) as $annotation) {
@@ -60,10 +55,7 @@ class Filter
     }
 
     /**
-     * @param string            $class
      * @param array<mixed>|null $options
-     *
-     * @return \Laminas\Filter\FilterInterface
      */
     protected function getLaminasInstance(string $class, ?array $options): FilterInterface
     {
@@ -73,7 +65,7 @@ class Filter
         $abstractFilterClass = AbstractFilter::class;
 
         if (!$filter instanceof $abstractFilterClass) {
-            throw new \InvalidArgumentException("Filter class must extend $abstractFilterClass: $class");
+            throw new \InvalidArgumentException("Filter class must extend {$abstractFilterClass}: {$class}");
         }
 
         try {

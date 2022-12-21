@@ -9,7 +9,7 @@ use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Component\Form\Test\TypeTestCase;
 
 /**
- * AbstractFormTypeExtension
+ * AbstractFormTypeExtension.
  */
 abstract class AbstractFormTypeExtension extends TypeTestCase
 {

@@ -5,7 +5,7 @@ namespace Bukashk0zzz\FilterBundle\Annotation;
 use Doctrine\ORM\Mapping\Annotation;
 
 /**
- * FilterAnnotation
+ * FilterAnnotation.
  *
  * @Annotation()
  * @Target({"PROPERTY", "METHOD"})
@@ -23,14 +23,14 @@ final class FilterAnnotation implements Annotation
     private $options;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param array<mixed> $parameters Filter parameters
      */
     public function __construct(array $parameters)
     {
         if (!\array_key_exists('value', $parameters) && !\array_key_exists('filter', $parameters)) {
-            throw new \LogicException(\sprintf('Either "value" or "filter" option must be set.'));
+            throw new \LogicException('Either "value" or "filter" option must be set.');
         }
 
         if (\array_key_exists('value', $parameters)) {
@@ -46,20 +46,12 @@ final class FilterAnnotation implements Annotation
         $this->setOptions($parameters['options']);
     }
 
-    /**
-     * @return string
-     */
     public function getFilter(): string
     {
         return $this->filter;
     }
 
-    /**
-     * @param mixed $filter
-     *
-     * @return FilterAnnotation
-     */
-    public function setFilter($filter): FilterAnnotation
+    public function setFilter(mixed $filter): self
     {
         if (!\is_string($filter)) {
             throw new \InvalidArgumentException('Filter must be string');
@@ -70,7 +62,7 @@ final class FilterAnnotation implements Annotation
         }
 
         if (!\class_exists($filter)) {
-            throw new \InvalidArgumentException("Could not find or autoload: $filter");
+            throw new \InvalidArgumentException("Could not find or autoload: {$filter}");
         }
 
         $this->filter = $filter;
@@ -88,10 +80,8 @@ final class FilterAnnotation implements Annotation
 
     /**
      * @param array<mixed>|null $options
-     *
-     * @return FilterAnnotation
      */
-    public function setOptions(?array $options): FilterAnnotation
+    public function setOptions(?array $options): self
     {
         $this->options = $options;
 

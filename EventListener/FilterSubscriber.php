@@ -7,7 +7,7 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
 /**
- * Class AbstractListener
+ * Class AbstractListener.
  */
 class FilterSubscriber implements EventSubscriber
 {
@@ -18,8 +18,6 @@ class FilterSubscriber implements EventSubscriber
 
     /**
      * FilterListener constructor.
-     *
-     * @param Filter $filterService
      */
     public function __construct(Filter $filterService)
     {
@@ -28,10 +26,8 @@ class FilterSubscriber implements EventSubscriber
 
     /**
      * {@inheritdoc}
-     *
-     * @return array
      */
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             'prePersist',
@@ -39,25 +35,16 @@ class FilterSubscriber implements EventSubscriber
         ];
     }
 
-    /**
-     * @param LifecycleEventArgs $args
-     */
     public function prePersist(LifecycleEventArgs $args): void
     {
         $this->filter($args);
     }
 
-    /**
-     * @param LifecycleEventArgs $args
-     */
     public function preUpdate(LifecycleEventArgs $args): void
     {
         $this->filter($args);
     }
 
-    /**
-     * @param LifecycleEventArgs $args
-     */
     protected function filter(LifecycleEventArgs $args): void
     {
         $entity = $args->getEntity();

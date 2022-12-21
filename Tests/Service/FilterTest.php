@@ -9,9 +9,11 @@ use Doctrine\Common\Cache\ArrayCache;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test the FilterTest
+ * Test the FilterTest.
+ *
+ * @internal
  */
-class FilterTest extends TestCase
+final class FilterTest extends TestCase
 {
     /**
      * @var Filter
@@ -19,7 +21,7 @@ class FilterTest extends TestCase
     protected $filter;
 
     /**
-     * Setup
+     * Setup.
      */
     protected function setUp(): void
     {
@@ -27,20 +29,20 @@ class FilterTest extends TestCase
     }
 
     /**
-     * Service init test
+     * Service init test.
      */
     public function testWrapper(): void
     {
-        //check if instance
+        // check if instance
         static::assertInstanceOf(Filter::class, $this->filter);
     }
 
     /**
-     * Test Filter With Object that null
+     * Test Filter With Object that null.
      */
     public function testFilterWithNullObject(): void
     {
         $this->filter->filterEntity(null);
-        self::assertTrue(true);
+        static::assertTrue(true);
     }
 }

@@ -27,7 +27,6 @@
         "laminas/laminas-filter": "^2.9"
     },
     "require-dev": {
-        "slevomat/coding-standard": "^8.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^8.4",
         "symfony/validator": "^6.0"
@@ -35,6 +34,11 @@
     "autoload": {
         "psr-4": {
             "Bukashk0zzz\\FilterBundle\\": ""
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

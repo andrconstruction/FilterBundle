@@ -7,16 +7,12 @@ use Bukashk0zzz\FilterBundle\Service\Filter;
 use Symfony\Component\Form\AbstractExtension;
 
 /**
- * Filter Extension
+ * Filter Extension.
  *
  * Enabled filtering in forms
  */
 class FilterExtension extends AbstractExtension
 {
-    /**
-     * @var bool
-     */
-    protected $autoFilter;
     /**
      * @var Filter
      */
@@ -25,13 +21,11 @@ class FilterExtension extends AbstractExtension
     /**
      * {@inheritdoc}
      *
-     * @param Filter $filterService
-     * @param        $autoFilter
+     * @param $autoFilter
      */
-    public function __construct(Filter $filterService, $autoFilter)
+    public function __construct(Filter $filterService, protected $autoFilter)
     {
         $this->filter = $filterService;
-        $this->autoFilter = $autoFilter;
     }
 
     /**
