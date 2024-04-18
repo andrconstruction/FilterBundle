@@ -48,25 +48,12 @@ class Filter
      */
     private function getAttributes(ReflectionProperty $property): array
     {
-        $propertyAttributes = $property->getAttributes();
+        $attrs = $property->getAttributes(FilterAnnotation::class);
 
         $attributes = [];
-        foreach ($propertyAttributes as $propertyAttrubute) {
-            if ($propertyAttrubute instanceof FilterAnnotation) {
-                $attributes[] = $propertyAttrubute;
-            }
+        foreach ($attrs as $attr) {
+            $attributes[] = $attr->newInstance();
         }
-
-        // If we get an empty array with the annotations, we try PHP Attributes
-        if (empty($attributes)) {
-            $attrs = $property->getAttributes(FilterAnnotation::class);
-
-            $attributes = [];
-            foreach ($attrs as $attr) {
-                $attributes[] = $attr->newInstance();
-            }
-        }
-
         return $attributes;
     }
 }
