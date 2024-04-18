@@ -9,8 +9,6 @@ services:
 
     bukashk0zzz_filter.filter:
         class: '%bukashk0zzz_filter.filter.class%'
-        arguments:
-            - '@annotations.cached_reader'
     bukashk0zzz_filter.form_type_extension:
             class: '%bukashk0zzz_filter.form_type_extension.class%'
             arguments:
