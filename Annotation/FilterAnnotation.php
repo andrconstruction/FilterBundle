@@ -3,17 +3,9 @@
 namespace Bukashk0zzz\FilterBundle\Annotation;
 
 use Attribute;
-use Doctrine\ORM\Mapping\Annotation;
-use Doctrine\ORM\Mapping\MappingAttribute;
 
-/**
- * FilterAnnotation.
- *
- * @Annotation()
- * @Target({"PROPERTY", "METHOD"})
- */
 #[Attribute(Attribute::TARGET_PROPERTY | Attribute::TARGET_METHOD | Attribute::IS_REPEATABLE)]
-final class FilterAnnotation implements MappingAttribute
+final class FilterAnnotation 
 {
     /**
      * @var string LaminasFilter name
