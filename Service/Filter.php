@@ -13,18 +13,6 @@ use ReflectionProperty;
  */
 class Filter
 {
-    /**
-     * @var Reader Cached annotation reader
-     */
-    protected $annotationReader;
-
-    /**
-     * Filter constructor.
-     */
-    public function __construct(Reader $annotationReader)
-    {
-        $this->annotationReader = $annotationReader;
-    }
 
     public function filterEntity(mixed $object): void
     {
@@ -60,11 +48,11 @@ class Filter
      */
     private function getAttributes(ReflectionProperty $property): array
     {
-        $annotations = $this->annotationReader->getPropertyAnnotations($property);
+        $propertyAttributes = $this->annotationReader->getPropertyAnnotations($property);
 
         $attributes = [];
-        foreach ($annotations as $annotation) {
-            if ($annotation instanceof FilterAnnotation) {
+        foreach ($propertyAttributes as $propertyAttrubute) {
+            if ($propertyAttrubute instanceof FilterAnnotation) {
                 $attributes[] = $annotation;
             }
         }
