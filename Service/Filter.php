@@ -44,7 +44,7 @@ class Filter
     /**
      * Get PHP Attributes.
      *
-     * @return array<FilterAttributes>
+     * @return array<FilterAnnotation>
      */
     private function getAttributes(ReflectionProperty $property): array
     {
