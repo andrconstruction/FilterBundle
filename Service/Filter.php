@@ -42,18 +42,18 @@ class Filter
     }
 
     /**
-     * Get Annotations of PHP Attributes.
+     * Get PHP Attributes.
      *
-     * @return array<FilterAnnotation>
+     * @return array<FilterAttributes>
      */
     private function getAttributes(ReflectionProperty $property): array
     {
-        $propertyAttributes = $this->annotationReader->getPropertyAnnotations($property);
+        $propertyAttributes = $property->getAttributes();
 
         $attributes = [];
         foreach ($propertyAttributes as $propertyAttrubute) {
             if ($propertyAttrubute instanceof FilterAnnotation) {
-                $attributes[] = $annotation;
+                $attributes[] = $propertyAttrubute;
             }
         }
 
